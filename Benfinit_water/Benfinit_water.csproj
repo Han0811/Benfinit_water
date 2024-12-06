@@ -9,9 +9,127 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\png\ban_do_1.png" />
+    <None Remove="View\png\ban_do_2.png" />
+    <None Remove="View\png\ban_do_3.png" />
+    <None Remove="View\png\check.png" />
+    <None Remove="View\png\dong_vat_1.png" />
+    <None Remove="View\png\dong_vat_2.png" />
+    <None Remove="View\png\dong_vat_3.png" />
+    <None Remove="View\png\go_1.png" />
+    <None Remove="View\png\go_2.png" />
+    <None Remove="View\png\go_3.png" />
+    <None Remove="View\png\hanh_chinh_1.png" />
+    <None Remove="View\png\hanh_chinh_2.png" />
+    <None Remove="View\png\hanh_chinh_3.png" />
+    <None Remove="View\png\hat_cay_1.png" />
+    <None Remove="View\png\hat_cay_2.png" />
+    <None Remove="View\png\hat_cay_3.png" />
+    <None Remove="View\png\he_thong_1.png" />
+    <None Remove="View\png\he_thong_2.png" />
+    <None Remove="View\png\he_thong_3.png" />
+    <None Remove="View\png\home_1.png" />
+    <None Remove="View\png\home_2.png" />
+    <None Remove="View\png\home_3.png" />
+    <None Remove="View\png\nguoi_dung_1.png" />
+    <None Remove="View\png\nguoi_dung_2.png" />
+    <None Remove="View\png\nguoi_dung_3.png" />
+    <None Remove="View\png\seach_1.png" />
+    <None Remove="View\png\seach_2.png" />
+    <None Remove="View\png\seach_3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GlmSharp" Version="0.9.8" />
     <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
     <PackageReference Include="MySql.Data" Version="9.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\png\ban_do_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\ban_do_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\ban_do_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\dong_vat_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\dong_vat_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\dong_vat_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\go_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\go_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\go_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\hanh_chinh_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\hanh_chinh_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\hanh_chinh_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\hat_cay_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\hat_cay_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\hat_cay_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\he_thong_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\he_thong_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\he_thong_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\home_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\home_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\home_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\nguoi_dung_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\nguoi_dung_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\nguoi_dung_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\seach_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\seach_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\png\seach_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

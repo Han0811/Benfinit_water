@@ -26,5 +26,12 @@ namespace Benfinit_water
         {
             myctrl.Content = new ctrl_quy_hoach();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            win_menu mywin =new win_menu();
+            mywin.Show();
+            this.Close();
+        }
     }
 }
