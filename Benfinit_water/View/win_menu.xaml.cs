@@ -493,6 +493,7 @@ namespace Benfinit_water.View
         {
             enter("hanh_chinh_den", "hanh_chinh_trang");
             doi_anh("hanh_chinh_png", "png/hanh_chinh_2.png");
+            
         }
 
         private void hanh_chinh_leave(object sender, MouseEventArgs e)
@@ -512,8 +513,7 @@ namespace Benfinit_water.View
 
         private void hanh_chinh_down(object sender, MouseButtonEventArgs e)
         {
-            var myctrl = new ctrl();
-            noi_dung.Content = myctrl;
+            noi_dung.Content = new ctrl_quy_hoach();
             home = false;
             hanh_chinh = true;
             hat_cay = false;
@@ -533,6 +533,7 @@ namespace Benfinit_water.View
         {
             enter("hat_cay_den", "hat_cay_trang");
             doi_anh("hat_cay_png", "png/hat_cay_2.png");
+            
         }
 
         private void hat_cay_leave(object sender, MouseEventArgs e)
@@ -552,8 +553,7 @@ namespace Benfinit_water.View
 
         private void hat_cay_down(object sender, MouseButtonEventArgs e)
         {
-            var myctrl = new ctrl();
-            noi_dung.Content = myctrl;
+            noi_dung.Content = new ctrl_thong_tin_cong_trinh();
             home = false;
             hanh_chinh = false;
             hat_cay = true;
