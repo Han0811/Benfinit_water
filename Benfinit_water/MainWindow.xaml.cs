@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Benfinit_water.View;
 
 namespace Benfinit_water
 {
@@ -19,6 +20,11 @@ namespace Benfinit_water
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btn(object sender, RoutedEventArgs e)
+        {
+            myctrl.Content = new ctrl_quy_hoach();
         }
     }
 }

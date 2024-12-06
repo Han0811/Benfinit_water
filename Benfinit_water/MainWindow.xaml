@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Benfinit_water"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Grid Margin="0,0,0,410">
+        <Button Click="btn" Margin="0,10,0,-10"></Button>
+        <ContentControl x:Name="myctrl" Height="350" Margin="0,52,0,-378"></ContentControl>
     </Grid>
 </Window>
