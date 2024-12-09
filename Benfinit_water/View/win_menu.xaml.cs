@@ -632,7 +632,7 @@ namespace Benfinit_water.View
 
         private void dong_vat_down(object sender, MouseButtonEventArgs e)
         {
-            var myctrl = new ctrl();
+            var myctrl = new ctrl_DuongOng();
             noi_dung.Content = myctrl;
             home = false;
             hanh_chinh = false;
