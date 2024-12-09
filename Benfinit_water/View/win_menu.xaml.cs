@@ -592,7 +592,7 @@ namespace Benfinit_water.View
 
         private void go_down(object sender, MouseButtonEventArgs e)
         {
-            var myctrl = new ctrl();
+            var myctrl = new ctrl_TramBom();
             noi_dung.Content = myctrl;
             home = false;
             hanh_chinh = false;
