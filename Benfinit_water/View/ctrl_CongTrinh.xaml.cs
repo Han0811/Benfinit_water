@@ -1,5 +1,4 @@
-﻿using Benfinit_water.Controller;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,22 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Benfinit_water.Controller;
 
 namespace Benfinit_water.View
 {
     /// <summary>
-    /// Interaction logic for ctrl_quy_hoach.xaml
+    /// Interaction logic for ctrl_CongTrinh.xaml
     /// </summary>
-    public partial class ctrl_quy_hoach : UserControl
+    public partial class ctrl_CongTrinh : UserControl
     {
-
-        private QuyHoachController controller;
+        private CongTrinhController controller;
         private bool isAdding;
 
-        public ctrl_quy_hoach()
+        public ctrl_CongTrinh()
         {
             InitializeComponent();
-            controller = new QuyHoachController();
+            controller = new CongTrinhController();
             LoadData();
         }
 
@@ -37,8 +36,8 @@ namespace Benfinit_water.View
         {
             try
             {
-                DataTable data = controller.LoadAllQuy_Hoach();
-                dataGrid.ItemsSource = data.DefaultView;
+                DataTable data = controller.LoadAllConTrinh();
+                dataGrids.ItemsSource = data.DefaultView;
             }
             catch (Exception ex)
             {
@@ -51,7 +50,7 @@ namespace Benfinit_water.View
             if (sender is Button button && button.Tag is object data)
             {
                 // Tìm dòng tương ứng
-                var row = dataGrid.ItemContainerGenerator.ContainerFromItem(data) as DataGridRow;
+                var row = dataGrids.ItemContainerGenerator.ContainerFromItem(data) as DataGridRow;
 
                 if (row != null)
                 {
@@ -79,7 +78,7 @@ namespace Benfinit_water.View
             {
                 try
                 {
-                    controller.DeleteQuy_Hoach(id);
+                    controller.DeleteCongTrinh(id);
                     MessageBox.Show("Xóa thành công!");
 
                     // Tải lại dữ liệu sau khi xóa
@@ -112,7 +111,7 @@ namespace Benfinit_water.View
                     try
                     {
                         // Thực hiện thêm sản phẩm vào database
-                        controller.AddQuy_hoach(name, category, price);
+                       // controller.AddQuy_hoach(name, category, price);
                         MessageBox.Show("Thêm sản phẩm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
                         // Tải lại dữ liệu
@@ -166,3 +165,4 @@ namespace Benfinit_water.View
 
     }
 }
+

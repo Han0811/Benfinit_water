@@ -553,7 +553,7 @@ namespace Benfinit_water.View
 
         private void hat_cay_down(object sender, MouseButtonEventArgs e)
         {
-            noi_dung.Content = new ctrl_thong_tin_cong_trinh();
+            noi_dung.Content = new ctrl_CongTrinh();
             home = false;
             hanh_chinh = false;
             hat_cay = true;

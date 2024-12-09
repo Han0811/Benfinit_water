@@ -18,7 +18,7 @@ namespace Benfinit_water.Controller
             model = new CongtrinhModel();
         }
 
-        public DataTable LoadAllQuy_Hoach()
+        public DataTable LoadAllConTrinh()
         {
             return model.GetAllCongTrinh();
         }
@@ -28,7 +28,7 @@ namespace Benfinit_water.Controller
         //    model.AddQuy_hoach(TenKyQuyHoach, ThoiGian, MoTa);
         //}
 
-        public void DeleteQuy_Hoach(string id)
+        public void DeleteCongTrinh(string id)
         {
             model.DeleteCongTrinh(id);
         }

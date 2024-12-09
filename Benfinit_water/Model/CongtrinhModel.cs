@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Benfinit_water.Model
 {
-    internal class CongtrinhModel
-    {
+     public class CongtrinhModel
+        {
         private string connectionString = "Server=localhost;Database=benfinit_water;Uid=root;Pwd=123456;";
 
         public DataTable GetAllCongTrinh()
