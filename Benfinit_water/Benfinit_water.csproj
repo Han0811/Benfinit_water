@@ -41,7 +41,9 @@
 
   <ItemGroup>
     <PackageReference Include="GlmSharp" Version="0.9.8" />
+    <PackageReference Include="GMap.Net.WPF" Version="1.0.0.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
+    <PackageReference Include="Microsoft.Maps.MapControl.WPF" Version="1.0.0.3" />
     <PackageReference Include="MySql.Data" Version="9.1.0" />
   </ItemGroup>
 
