@@ -673,7 +673,7 @@ namespace Benfinit_water.View
 
         private void ban_do_down(object sender, MouseButtonEventArgs e)
         {
-            var myctrl = new ctrl();
+            var myctrl = new MapControlUserControl();
             noi_dung.Content = myctrl;
             home = false;
             hanh_chinh = false;
