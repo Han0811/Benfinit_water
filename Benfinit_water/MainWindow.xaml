@@ -11,6 +11,8 @@
         <Button 
                 Margin="0,10,0,-10"
                 Click="Button_Click">test menu</Button>
+        <Button Margin="0,10,0,-10"
+                Click="Button_Click_1">test đăng nhập</Button>
         <ContentControl x:Name="myctrl" Height="350" Margin="0,52,0,-378"></ContentControl>
     </StackPanel>
 </Window>

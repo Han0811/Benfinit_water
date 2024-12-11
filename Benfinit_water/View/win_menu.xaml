@@ -616,8 +616,8 @@
                             <StackPanel>
                                 <Border x:Name="thong_tin_trang"
                                         Margin="10"
-                                        Background="#E8E8E8"
-                                        Style="{StaticResource hieu_ung_bong_trang}"
+                                        BorderBrush="#aeaeae"
+                                        BorderThickness="1"
                                         CornerRadius="25"
                                         Height="50"
                                         Width="120"
@@ -625,16 +625,15 @@
                                         VerticalAlignment="Center"
                                         Grid.Column="1">
                                     <Border x:Name="thong_tin_den"
-                                            Background="#E8E8E8"
-                                            Style="{StaticResource hieu_ung_bong_den}"
+                                            BorderBrush="#aeaeae"
+                                            
                                             CornerRadius="25"
                                             Height="50"
                                             Width="120"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Grid.Column="1"
-                                            MouseEnter="thong_tin_enter"
-                                            MouseLeave="thong_tin_leave"
+                                            
                                             MouseLeftButtonDown="thong_tin_down">
                                         <TextBlock Text="Thông tin"
                                                    HorizontalAlignment="Center"
@@ -645,8 +644,8 @@
                                 </Border>
                                 <Border x:Name="dang_xuat_trang"
                                         Margin="10"
-                                        Background="#E8E8E8"
-                                        Style="{StaticResource hieu_ung_bong_trang}"
+                                        BorderBrush="#aeaeae"
+                                        BorderThickness="1"
                                         CornerRadius="25"
                                         Height="50"
                                         Width="120"
@@ -654,16 +653,15 @@
                                         VerticalAlignment="Center"
                                         Grid.Column="1">
                                     <Border x:Name="dang_xuat_den"
-                                            Background="#E8E8E8"
-                                            Style="{StaticResource hieu_ung_bong_den}"
+                                            BorderBrush="#aeaeae"
+                                            BorderThickness="1"
                                             CornerRadius="25"
                                             Height="50"
                                             Width="120"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Grid.Column="1"
-                                            MouseEnter="dang_xuat_enter"
-                                            MouseLeave="dang_xuat_leave"
+                                            
                                             MouseLeftButtonDown="dang_xuat_down">
                                         <TextBlock Text="Đăng xuất"
                                                    HorizontalAlignment="Center"

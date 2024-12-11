@@ -21,12 +21,13 @@ namespace Benfinit_water.View
     /// </summary>
     public partial class win_menu : Window
     {
-        
-        public win_menu()
+        public string username1;
+        public win_menu(string username)
         {
             InitializeComponent();
-            
-
+            MessageBox.Show(username);
+            username1 = username;
+            MessageBox.Show(username1);
         }
 
         private bool home = false;
