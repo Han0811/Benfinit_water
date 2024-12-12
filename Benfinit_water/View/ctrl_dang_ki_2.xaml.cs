@@ -280,7 +280,7 @@ namespace Benfinit_water.View
                     string insertHistoryQuery = "INSERT INTO access_history (user_name, action_type) VALUES (@user_name)";
                     using (MySqlCommand cmd = new MySqlCommand(insertHistoryQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@user_id", userId);
+                        
                         cmd.Parameters.AddWithValue("@action", "register");  // Lưu lại hành động đăng ký
                         cmd.Parameters.AddWithValue("@ip_address", GetIpAddress());  // Lấy địa chỉ IP của người dùng
 
