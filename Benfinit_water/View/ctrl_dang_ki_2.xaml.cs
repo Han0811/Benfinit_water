@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using Benfinit_water.Model;
+using Benfinit_water.Controller;
 
 namespace Benfinit_water.View
 {
@@ -227,7 +229,8 @@ namespace Benfinit_water.View
             if (c > 0) return;
 
             // Nếu không có lỗi, ghi vào MySQL
-            if (SaveUserToDatabase(last_name_o, fist_name_o, address_o, email_o, username, phone, password))
+            if (_dangki.SaveUserToDatabase(last_name_o, fist_name_o, address_o, email_o, username, phone, password))
+               
             {
 
                 var myControl = new ctrl_dang_ki_thanh_cong();
@@ -244,105 +247,10 @@ namespace Benfinit_water.View
 
 
         // Hàm lưu người dùng vào cơ sở dữ liệu
-        private bool SaveUserToDatabase(string last_name, string first_name, string address, string email, string username, string phone, string password)
-        {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+        
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
+        
 
-                    // Bước 1: Lưu thông tin người dùng mới vào bảng auth_user
-                    string query = @"
-            INSERT INTO users (user_name, address, email, phone, password, administrations_id,first_name,last_name)
-            VALUES (@user_name, @address, @email, @phone, @password, 0)";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        // Gán giá trị cho các tham số
-                        cmd.Parameters.AddWithValue("@first_name", first_name);
-                        cmd.Parameters.AddWithValue("@last_name", last_name);
-                        cmd.Parameters.AddWithValue("@address", address);
-                        cmd.Parameters.AddWithValue("@email", email);
-                        cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@phone", phone);
-                        cmd.Parameters.AddWithValue("@password", password);
-
-                        // Thực thi lệnh để chèn người dùng vào cơ sở dữ liệu
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    
-
-                    // Bước 3: Lưu lịch sử đăng ký vào bảng lich_su_truy_cap
-                    string insertHistoryQuery = "INSERT INTO access_history (user_name, action_type) VALUES (@user_name)";
-                    using (MySqlCommand cmd = new MySqlCommand(insertHistoryQuery, conn))
-                    {
-                        
-                        cmd.Parameters.AddWithValue("@action", "register");  // Lưu lại hành động đăng ký
-                        cmd.Parameters.AddWithValue("@ip_address", GetIpAddress());  // Lấy địa chỉ IP của người dùng
-
-                        // Thực thi câu lệnh chèn lịch sử
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    // Tùy chọn ghi log lỗi
-                    ShowErrorMessage($"Đã xảy ra lỗi: {ex.Message}");
-                    return false;
-                }
-            }
-        }
-
-        private string GetIpAddress()
-        {
-            // Lấy địa chỉ IP của máy tính người dùng
-            string ipAddress = string.Empty;
-            try
-            {
-                ipAddress = System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName())
-                    .FirstOrDefault(ip => ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)?.ToString();
-            }
-            catch
-            {
-                ipAddress = "Không xác định";
-            }
-            return ipAddress;
-        }
-
-        private void ShowErrorMessage(string errorMessage)
-        {
-            // Tạo một cửa sổ mới để hiển thị lỗi
-            Window errorWindow = new Window
-            {
-                Title = "Lỗi",
-                Width = 400,
-                Height = 200,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-            };
-
-            // Tạo TextBox để hiển thị lỗi
-            TextBox errorTextBox = new TextBox
-            {
-                Text = errorMessage,
-                IsReadOnly = true,  // Để không thể chỉnh sửa, chỉ có thể sao chép
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-                Margin = new Thickness(10),
-                VerticalAlignment = VerticalAlignment.Stretch,
-                HorizontalAlignment = HorizontalAlignment.Stretch
-            };
-
-            // Thêm TextBox vào cửa sổ
-            errorWindow.Content = errorTextBox;
-
-            // Hiển thị cửa sổ lỗi
-            errorWindow.ShowDialog();
-        }
+       
     }
 }

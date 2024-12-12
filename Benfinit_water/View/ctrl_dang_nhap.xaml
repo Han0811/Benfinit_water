@@ -55,7 +55,8 @@
                            FontSize="30"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Grid.Row="2"
+                <TextBlock x:Name="ten_dang_nhap_tbl"
+                    Grid.Row="2"
                            Grid.RowSpan="1"
                            Grid.Column="1"
                            Grid.ColumnSpan="6"
@@ -82,7 +83,8 @@
                              TextAlignment="Left"
                              VerticalContentAlignment="Center" />
                 </Border>
-                <TextBlock Grid.Row="4"
+                <TextBlock x:Name="mat_khau_tbl"
+                    Grid.Row="4"
                            Grid.RowSpan="1"
                            Grid.Column="1"
                            Grid.ColumnSpan="6"

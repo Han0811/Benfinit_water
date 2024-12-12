@@ -15,7 +15,10 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Benfinit_water.Controller;
 using MySql.Data.MySqlClient;
+using Benfinit_water.Model;
+using Benfinit_water.Controller;
 
 namespace Benfinit_water.View
 {
@@ -27,6 +30,7 @@ namespace Benfinit_water.View
         public ctrl_quen_mat_khau()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
         public ContentControl UserControlContainer { get; set; }
         public Window newscreen { get; set; }
@@ -193,33 +197,7 @@ namespace Benfinit_water.View
 
 
 
-        public class MainViewModel : INotifyPropertyChanged
-        {
-            private string _numberInput;
-
-            public string NumberInput
-            {
-                get => _numberInput;
-                set
-                {
-                    if (_numberInput != value)
-                    {
-                        // Kiểm tra chỉ nhập số
-                        if (string.IsNullOrEmpty(value) || int.TryParse(value, out _))
-                        {
-                            _numberInput = value;
-                            OnPropertyChanged(nameof(NumberInput));
-                        }
-                    }
-                }
-            }
-
-            public event PropertyChangedEventHandler PropertyChanged;
-            protected void OnPropertyChanged(string propertyName)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        
         private void LoginButton_Click(object sender, MouseButtonEventArgs e)
         {
 
@@ -235,7 +213,7 @@ namespace Benfinit_water.View
             // 1. Kiểm tra tên người dùng hoặc số điện thoại đã tồn tại
             if (username != "")
             {
-                if (IsNoExistsUsername(username))
+                if (_doi_mat_khau.IsNoExistsUsername(username))
                 {
                     log_used_name.Text = "Tên người dùng không tồn tại.";
                     log_used_name.Foreground = new SolidColorBrush(Colors.Red);
@@ -255,7 +233,7 @@ namespace Benfinit_water.View
             }
             if (phone != "")
             {
-                if (!IsUserExistsPhone(phone, username))
+                if (!_doi_mat_khau.IsUserExistsPhone(phone, username))
                 {
                     log_so_dien_thoai.Text = "Sai số điện thoại";
                     log_so_dien_thoai.Foreground = new SolidColorBrush(Colors.Red); ;
@@ -323,7 +301,7 @@ namespace Benfinit_water.View
 
             // Nếu không có lỗi, ghi vào MySQL
 
-            if (UpdateUserPassword(username, password))
+            if (_doi_mat_khau.UpdateUserPassword(username, password))
             {
 
                 var myControl = new ctrl_lay_lai_mat_khau_thanh_cong();
@@ -339,123 +317,11 @@ namespace Benfinit_water.View
 
         }
 
-        private bool UpdateUserPassword(string username, string newPassword)
-        {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+        
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
+        
 
-                    // Câu truy vấn để cập nhật mật khẩu cho người dùng dựa trên username
-                    string query = "UPDATE auth_user SET password = @newPassword WHERE username = @username";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        // Gán giá trị cho các tham số
-                        cmd.Parameters.AddWithValue("@newPassword", newPassword);
-                        cmd.Parameters.AddWithValue("@username", username);
-
-                        // Thực thi lệnh
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        // Kiểm tra xem có bản ghi nào được cập nhật không
-                        return rowsAffected > 0; // Trả về true nếu cập nhật thành công
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Ghi log hoặc hiển thị lỗi
-                    ShowErrorMessage($"Đã xảy ra lỗi: {ex.Message}");
-                    return false;
-                }
-            }
-        }
-
-        private void ShowErrorMessage(string errorMessage)
-        {
-            // Tạo một cửa sổ mới để hiển thị lỗi
-            Window errorWindow = new Window
-            {
-                Title = "Lỗi",
-                Width = 400,
-                Height = 200,
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-            };
-
-            // Tạo TextBox để hiển thị lỗi
-            TextBox errorTextBox = new TextBox
-            {
-                Text = errorMessage,
-                IsReadOnly = true,  // Để không thể chỉnh sửa, chỉ có thể sao chép
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-                Margin = new Thickness(10),
-                VerticalAlignment = VerticalAlignment.Stretch,
-                HorizontalAlignment = HorizontalAlignment.Stretch
-            };
-
-            // Thêm TextBox vào cửa sổ
-            errorWindow.Content = errorTextBox;
-
-            // Hiển thị cửa sổ lỗi
-            errorWindow.ShowDialog();
-        }
-
-        // Hàm kiểm tra người dùng đã tồn tại
-        private bool IsNoExistsUsername(string username)
-        {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT COUNT(*) FROM auth_user WHERE username = @username";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        return count == 0;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    return false;
-                }
-            }
-        }
-        private bool IsUserExistsPhone(string phone, string username)
-        {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    // Điều chỉnh query để kiểm tra phone của một username cụ thể
-                    string query = "SELECT COUNT(*) FROM auth_user WHERE username = @username AND phone = @phone";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@phone", phone);
-
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        return count > 0; // Nếu count > 0, nghĩa là có tồn tại phone cho username
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return false; // Trả về false nếu có lỗi
-                }
-            }
-        }
+        
 
 
         private void Chua_co_tai_khoan_enter(object sender, MouseEventArgs e)

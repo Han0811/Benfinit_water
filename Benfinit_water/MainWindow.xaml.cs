@@ -29,7 +29,7 @@ namespace Benfinit_water
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            win_menu mywin =new win_menu("");
+            win_menu mywin =new win_menu(0);
             mywin.Show();
             this.Close();
         }
@@ -37,6 +37,13 @@ namespace Benfinit_water
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             win_dang_nhap mywin = new win_dang_nhap();
+            mywin.Show();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            wintest mywin = new wintest();
             mywin.Show();
             this.Close();
         }

@@ -14,6 +14,8 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Benfinit_water.Controller;
+using Benfinit_water.Model;
 using MySql.Data.MySqlClient;
 
 namespace Benfinit_water.View
@@ -157,81 +159,70 @@ namespace Benfinit_water.View
             string username = used_name.Text;
             string password = pass.Password;
 
-            // Chuỗi kết nối đến cơ sở dữ liệu MySQL
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+            List<usermodel> users = _userprovider.GetUsers();
 
-            try
+            // Kiểm tra xem số điện thoại đã tồn tại trong danh sách hay chưa
+
+            
+            if (username != "")
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                bool userExists = users.Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
+                if (!userExists)
                 {
-                    connection.Open();
+                    ten_dang_nhap_tbl.Text = "Tên đăng nhập không chính xác:";
+                    ten_dang_nhap_tbl.Foreground = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    ten_dang_nhap_tbl.Text = "Tên đăng nhập:";
+                    ten_dang_nhap_tbl.Foreground = new SolidColorBrush(Colors.Black);
 
-                    // Truy vấn kiểm tra tài khoản
-                    string query = "SELECT COUNT(*) FROM auth_user WHERE username = @username AND password = @password";
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        // Thêm tham số để tránh SQL Injection
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
-
-                        // Thực thi truy vấn
-                        int result = Convert.ToInt32(command.ExecuteScalar());
-
-                        if (result > 0)
-                        {
-                            // Lấy user_id từ cơ sở dữ liệu
-                            string userIdQuery = "SELECT id FROM auth_user WHERE username = @username";
-                            using (MySqlCommand userIdCommand = new MySqlCommand(userIdQuery, connection))
-                            {
-                                userIdCommand.Parameters.AddWithValue("@username", username);
-                                int userId = Convert.ToInt32(userIdCommand.ExecuteScalar());
-
-                                // Chèn bản ghi vào bảng lịch sử truy cập
-                                string insertHistoryQuery = "INSERT INTO lich_su_truy_cap (user_id, action, ip_address) VALUES (@user_id, @action, @ip_address)";
-                                using (MySqlCommand insertHistoryCommand = new MySqlCommand(insertHistoryQuery, connection))
-                                {
-                                    insertHistoryCommand.Parameters.AddWithValue("@user_id", userId);
-                                    insertHistoryCommand.Parameters.AddWithValue("@action", "login");
-                                    insertHistoryCommand.Parameters.AddWithValue("@ip_address", GetIpAddress());  // Lấy địa chỉ IP của người dùng
-
-                                    insertHistoryCommand.ExecuteNonQuery(); // Thực thi câu lệnh chèn
-                                }
-                            }
-
-                            // Tiến hành mở màn hình menu sau khi đăng nhập thành công
-                            win_menu screen = new win_menu(username);
-                            MessageBox.Show(username);
-                            screen.Show();
-                            newscreen.Close();  // Đóng cửa sổ đăng nhập
-                        }
-                        else
-                        {
-                            MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                    }
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Lỗi khi kết nối cơ sở dữ liệu: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                mat_khau_tbl.Text = "Tên đăng nhập trống:";
+                mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Red);
             }
+            if (password != "")
+            {
+                bool passExists = users.Any(u => u.Password.Equals(password, StringComparison.OrdinalIgnoreCase));
+                if (!passExists)
+                {
+                    mat_khau_tbl.Text = "Mật khẩu không chính xác:";
+                    mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    mat_khau_tbl.Text = "Mật khẩu nhập:";
+                    mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Black);
+
+                }
+            }
+            else
+            {
+                ten_dang_nhap_tbl.Text = "Mật khẩu trống:";
+                ten_dang_nhap_tbl.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            if ((username != "") && (password != ""))
+            {
+                bool passExists = users.Any(u => u.Password.Equals(password, StringComparison.OrdinalIgnoreCase));
+                bool userExists = users.Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
+                if (passExists && userExists) {
+                    
+                    var userId = users
+                    .Where(u => u.UserName == username)
+                    .Select(u => u.Id)
+                    .FirstOrDefault();
+                    win_menu mywin = new win_menu(userId);
+                    mywin.Show();
+                    newscreen.Close();
+                }
+            }
+
         }
 
-        private string GetIpAddress()
-        {
-            // Lấy địa chỉ IP của máy tính người dùng
-            string ipAddress = string.Empty;
-            try
-            {
-                ipAddress = System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName())
-                    .FirstOrDefault(ip => ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)?.ToString();
-            }
-            catch
-            {
-                ipAddress = "Không xác định";
-            }
-            return ipAddress;
-        }
+
 
         private void Chua_co_tai_khoan(object sender, MouseButtonEventArgs e)
         {

@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using Benfinit_water.Model;
+using Benfinit_water.Controller;
+
 
 namespace Benfinit_water.View
 {
@@ -30,6 +32,7 @@ namespace Benfinit_water.View
         public ctrl_dang_ki_1()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
         private void Border_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -214,33 +217,7 @@ namespace Benfinit_water.View
                 quen_mat_khau.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
-        public class MainViewModel : INotifyPropertyChanged
-        {
-            private string _numberInput;
-
-            public string NumberInput
-            {
-                get => _numberInput;
-                set
-                {
-                    if (_numberInput != value)
-                    {
-                        // Kiểm tra chỉ nhập số
-                        if (string.IsNullOrEmpty(value) || int.TryParse(value, out _))
-                        {
-                            _numberInput = value;
-                            OnPropertyChanged(nameof(NumberInput));
-                        }
-                    }
-                }
-            }
-
-            public event PropertyChangedEventHandler PropertyChanged;
-            protected void OnPropertyChanged(string propertyName)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        
         private void LoginButton_Click(object sender, MouseButtonEventArgs e)
         {
 
@@ -256,7 +233,7 @@ namespace Benfinit_water.View
             // 1. Kiểm tra tên người dùng hoặc số điện thoại đã tồn tại
             if (username != "")
             {
-                if (IsUserExistsUsername(username))
+                if (_dangki.IsUserExistsUsername(username))
                 {
                     log_used_name.Text = "Tên người dùng đã tồn tại.";
                     log_used_name.Foreground = new SolidColorBrush(Colors.Red);
@@ -276,7 +253,7 @@ namespace Benfinit_water.View
             }
             if (phone != "")
             {
-                if (IsUserExistsPhone(phone))
+                if (_dangki.IsUserExistsPhone(phone))
                 {
                     log_so_dien_thoai.Text = "Số điện thoại đã tồn tại.";
                     log_so_dien_thoai.Foreground = new SolidColorBrush(Colors.Red); ;
@@ -357,56 +334,9 @@ namespace Benfinit_water.View
 
 
         }
+        
 
-        // Hàm kiểm tra người dùng đã tồn tại
-        private bool IsUserExistsUsername(string username)
-        {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT COUNT(*) FROM users WHERE user_name = @username";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        return count > 0;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    return true;
-                }
-            }
-        }
-        private bool IsUserExistsPhone(string phone)
-        {
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT COUNT(*) FROM user_name WHERE  phone = @phone";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@phone", phone);
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        return count > 0;
 
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    return true;
-                }
-            }
-        }
     }
 }
