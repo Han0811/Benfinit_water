@@ -850,6 +850,7 @@ namespace Benfinit_water.View
         private void thong_tin_down(object sender, MouseButtonEventArgs e)
         {
             
+            noi_dung.Content=new ctrl_thong_tin_user(id);
         }
         private void dang_xuat_enter(object sender, MouseEventArgs e)
         {
