@@ -14,6 +14,7 @@ using System.Windows.Media.Effects;
 using System.Data;
 using Benfinit_water.Controller;
 using System.Diagnostics.Eventing.Reader;
+using System.Xml;
 
 namespace Benfinit_water.Model
 {
@@ -35,11 +36,7 @@ namespace Benfinit_water.Model
                     conn.Open();
 
                     // Câu lệnh SQL để lấy dữ liệu từ bảng "users" và "thong_tin_user"
-                    string query = @"
-                    SELECT u.id, u.is_admin, u.user_name, u.is_active, u.don_vi_cong_tac, 
-                           t.address, t.email, t.phone, t.password, t.date_joined, t.first_name, t.last_name
-                    FROM users u
-                    JOIN thong_tin_user t ON u.id = t.id";
+                    string query = "select * from users";
 
                     // Tạo câu lệnh MySqlCommand cho câu truy vấn JOIN
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -52,6 +49,7 @@ namespace Benfinit_water.Model
                         {
                             usermodel user = new usermodel
                             {
+
                                 Id = reader.GetInt32("id"),
                                 IsAdmin = reader.GetBoolean("is_admin"),
                                 UserName = reader.GetString("user_name"),
@@ -79,6 +77,9 @@ namespace Benfinit_water.Model
 
             return users;
         }
+       
+   
+ 
 
         public static bool f_sql(
     string lastName, string firstName, string address, string email,
