@@ -122,7 +122,7 @@ Click="btnAdd_Click" Style="{StaticResource RoundedButtonWithShadow}" RenderTran
                         </DataGridTemplateColumn.HeaderStyle>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Xóa" Style="{StaticResource RoundedButtonWithShadow}" Click="Xoa_Click" Tag="{Binding ID_QuyHoach}" />
+                                <Button Content="Xóa" Style="{StaticResource RoundedButtonWithShadow}" Click="Xoa_Click" Tag="{Binding ID_DuongOng}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -180,19 +180,31 @@ Click="btnAdd_Click" Style="{StaticResource RoundedButtonWithShadow}" RenderTran
                     FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Top"
                     Margin="5" Grid.Row="0" Click="CloseInputGrid_Click" />
                 <StackPanel Grid.Row="1" Margin="20">
-                    <TextBlock Text="Thêm Quy Hoạch" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" 
+                    <TextBlock Text="Thêm Đường Ống" FontWeight="Bold" FontSize="18" Margin="0,0,0,10" 
                            HorizontalAlignment="Center" />
                     <StackPanel Orientation="Horizontal" Margin="0,10">
-                        <TextBlock Text="Tên Kỳ: " Width="100" VerticalAlignment="Center" />
+                        <TextBlock Text="Tên Đường Ống: " Width="100" VerticalAlignment="Center" />
                         <TextBox x:Name="txtName" Width="200" MinWidth="150" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10">
-                        <TextBlock Text="Thời Gian: " Width="100" VerticalAlignment="Center" />
+                        <TextBlock Text="Chiều Dài: " Width="100" VerticalAlignment="Center" />
                         <TextBox x:Name="txtCategory" Width="200" MinWidth="150" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10">
-                        <TextBlock Text="Mô Tả: " Width="100" VerticalAlignment="Center" />
+                        <TextBlock Text="Đường Kính: " Width="100" VerticalAlignment="Center" />
                         <TextBox x:Name="txtPrice" Width="200" MinWidth="150" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10">
+                        <TextBlock Text="Vật Liệu: " Width="100" VerticalAlignment="Center" />
+                        <TextBox x:Name="txtMater" Width="200" MinWidth="150" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10">
+                        <TextBlock Text="Vị Trí: " Width="100" VerticalAlignment="Center" />
+                        <TextBox x:Name="txtMap" Width="200" MinWidth="150" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10">
+                        <TextBlock Text="ID Công Trình: " Width="100" VerticalAlignment="Center" />
+                        <TextBox x:Name="txtConst" Width="200" MinWidth="150" />
                     </StackPanel>
                 </StackPanel>
                 <Button Content="Submit" HorizontalAlignment="Center" Width="150" Height="40"

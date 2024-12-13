@@ -38,30 +38,33 @@ namespace Benfinit_water.Model
             return dataTable;
         }
 
-        //public void AddQuy_hoach(string TenKyQuyHoach, string ThoiGian, string MoTa)
-        //{
-        //    try
-        //    {
-        //        using (MySqlConnection connection = new MySqlConnection(connectionString))
-        //        {
-        //            connection.Open();
-        //            string sql = "INSERT INTO quyhoach (TenKyQuyHoach, ThoiGian, MoTa) VALUES (@TenKyQuyHoach, @ThoiGian, @MoTa)";
-        //            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-        //            {
-        //                cmd.Parameters.AddWithValue("@TenKyQuyHoach", TenKyQuyHoach);
+        public void AddDuongOng(string TenDuongOng, float ChieuDai, float DuongKinh, string VatLieu, string ViTri, int ID_CongTrinh)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "INSERT INTO duongong (TenDuongOng, ChieuDai, DuongKinh, VatLieu, ViTri, ID_CongTrinh) VALUES (@TenDuongOng, @ChieuDai, @DuongKinh, @VatLieu, @ViTri, @ID_CongTrinh)";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@TenDuongOng", TenDuongOng);
 
-        //                cmd.Parameters.AddWithValue("@ThoiGian", ThoiGian);
+                        cmd.Parameters.AddWithValue("@ChieuDai", ChieuDai);
 
-        //                cmd.Parameters.AddWithValue("@MoTa", MoTa);
-        //                cmd.ExecuteNonQuery();
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Lỗi khi thêm dữ liệu: " + ex.Message);
-        //    }
-        //}
+                        cmd.Parameters.AddWithValue("@DuongKinh", DuongKinh);
+                        cmd.Parameters.AddWithValue("@VatLieu", VatLieu);
+                        cmd.Parameters.AddWithValue("@ViTri", ViTri);
+                        cmd.Parameters.AddWithValue("@ID_CongTrinh", ID_CongTrinh);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thêm dữ liệu: " + ex.Message);
+            }
+        }
 
         public void DeleteDuongOng(string id)
         {

@@ -24,6 +24,11 @@ namespace Benfinit_water.Controller
             return model.GetAllDuongOng();
         }
 
+        public void AddDuongOng(string TenDuongOng, float ChieuDai, float DuongKinh, string VatLieu, string ViTri, int ID_CongTrinh)
+        {
+            model.AddDuongOng(TenDuongOng, ChieuDai, DuongKinh, VatLieu, ViTri, ID_CongTrinh);
+        }
+
         public void DeteleDuongOng(String id)
         {
             model.DeleteDuongOng(id);
