@@ -10,7 +10,7 @@ namespace Benfinit_water.Model
 {
      public class CongtrinhModel
         {
-        private string connectionString = "Server=localhost;Database=benfinit_water;Uid=root;Pwd=1234CapCongTrinhID_QuyHoach;";
+        private string connectionString = "Server=localhost;Database=benfinit_water;Uid=root;Pwd=123456;";
 
         public DataTable GetAllCongTrinh()
         {
@@ -38,14 +38,14 @@ namespace Benfinit_water.Model
             return dataTable;
         }
 
-        public void AddCong_Trinh(string TenCongTrinh, string LoaiCongTrinh, string ViTri, string CapCongTrinh, string ID_QuyHoach)
+        public void AddCong_Trinh(string TenCongTrinh, string LoaiCongTrinh, string ViTri, string CapCongTrinh, int ID_QuyHoach)
         {
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "INSERT INTO quyhoach (TenCongTrinh, LoaiCongTrinh, ViTri,CapCongTrinh,ID_QuyHoach) VALUES (@TenCongTrinh, @LoaiCongTrinh, @ViTri, @CapCongTrinh,@ID_QuyHoach)";
+                    string sql = "INSERT INTO congtrinhthuyloi (TenCongTrinh, LoaiCongTrinh, ViTri, CapCongTrinh,ID_QuyHoach) VALUES (@TenCongTrinh, @LoaiCongTrinh, @ViTri, @CapCongTrinh,@ID_QuyHoach)";
                     using (MySqlCommand cmd = new MySqlCommand(sql, connection))
                     {
                         cmd.Parameters.AddWithValue("@TenCongTrinh", TenCongTrinh);
@@ -54,7 +54,7 @@ namespace Benfinit_water.Model
 
                         cmd.Parameters.AddWithValue("@ViTri", ViTri);
                         cmd.Parameters.AddWithValue("@CapCongTrinh", CapCongTrinh);
-                        cmd.Parameters.AddWithValue("@CapCongTrinh", ID_QuyHoach);
+                        cmd.Parameters.AddWithValue("@ID_QuyHoach", ID_QuyHoach);
                         cmd.ExecuteNonQuery();
                     }
                 }

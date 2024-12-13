@@ -23,7 +23,7 @@ namespace Benfinit_water.Controller
             return model.GetAllCongTrinh();
         }
 
-        public void AddQuy_hoach(string TenCongTrinh, string LoaiCongTrinh, string ViTri, string CapCongTrinh, string ID_QuyHoach)
+        public void AddQuy_hoach(string TenCongTrinh, string LoaiCongTrinh, string ViTri, string CapCongTrinh, int ID_QuyHoach)
         {
             model.AddCong_Trinh(TenCongTrinh, LoaiCongTrinh, ViTri, CapCongTrinh, ID_QuyHoach);
         }

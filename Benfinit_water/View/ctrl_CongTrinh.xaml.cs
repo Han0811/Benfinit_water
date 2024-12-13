@@ -105,13 +105,14 @@ namespace Benfinit_water.View
                 string name = txtName.Text;
                 string category = txtCategory.Text;
                 string price = txtPrice.Text;
+                string construc = txtConstruction.Text;
 
-                if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(category) && !string.IsNullOrWhiteSpace(price))
+                if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(category) && !string.IsNullOrWhiteSpace(price) && !string.IsNullOrWhiteSpace(construc) && int.TryParse(txtPlan.Text, out int plan))
                 {
                     try
                     {
                         // Thực hiện thêm sản phẩm vào database
-                       // controller.AddQuy_hoach(name, category, price);
+                        controller.AddQuy_hoach(name, category, price, construc, plan);
                         MessageBox.Show("Thêm sản phẩm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
                         // Tải lại dữ liệu
@@ -125,6 +126,8 @@ namespace Benfinit_water.View
                         txtName.Clear();
                         txtCategory.Clear();
                         txtPrice.Clear();
+                        txtConstruction.Clear();
+                        txtPlan.Clear();
                     }
                     catch (Exception ex)
                     {
