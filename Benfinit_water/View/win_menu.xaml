@@ -93,7 +93,7 @@
                         </Image.Source>
                     </Image>
                 </Border>
-                <Border x:Name="hanh_chinh_trang"
+                <Border x:Name="quy_hoach_trang"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_trang}"
                         CornerRadius="5"
@@ -105,7 +105,7 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"></Border>
-                <Border x:Name="hanh_chinh_den"
+                <Border x:Name="quy_hoach_den"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_den}"
                         CornerRadius="5"
@@ -117,18 +117,18 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"
-                        MouseEnter="hanh_chinh_enter"
-                        MouseLeave="hanh_chinh_leave"
-                        MouseLeftButtonDown="hanh_chinh_down">
-                    <Image Name="hanh_chinh_png"
+                        MouseEnter="quy_hoach_enter"
+                        MouseLeave="quy_hoach_leave"
+                        MouseLeftButtonDown="quy_hoach_down">
+                    <Image Name="quy_hoach_png"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center">
                         <Image.Source>
-                            <BitmapImage UriSource="png/hanh_chinh_1.png" />
+                            <BitmapImage UriSource="png/quy_hoach_1.png" />
                         </Image.Source>
                     </Image>
                 </Border>
-                <Border x:Name="hat_cay_trang"
+                <Border x:Name="dap_nuoc_trang"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_trang}"
                         CornerRadius="5"
@@ -140,7 +140,7 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"></Border>
-                <Border x:Name="hat_cay_den"
+                <Border x:Name="dap_nuoc_den"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_den}"
                         CornerRadius="5"
@@ -152,18 +152,18 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"
-                        MouseEnter="hat_cay_enter"
-                        MouseLeave="hat_cay_leave"
-                        MouseLeftButtonDown="hat_cay_down">
-                    <Image Name="hat_cay_png"
+                        MouseEnter="dap_nuoc_enter"
+                        MouseLeave="dap_nuoc_leave"
+                        MouseLeftButtonDown="dap_nuoc_down">
+                    <Image Name="dap_nuoc_png"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center">
                         <Image.Source>
-                            <BitmapImage UriSource="png/hat_cay_1.png" />
+                            <BitmapImage UriSource="png/dap_nuoc_1.png" />
                         </Image.Source>
                     </Image>
                 </Border>
-                <Border x:Name="go_trang"
+                <Border x:Name="bom_nuoc_trang"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_trang}"
                         CornerRadius="5"
@@ -175,7 +175,7 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"></Border>
-                <Border x:Name="go_den"
+                <Border x:Name="bom_nuoc_den"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_den}"
                         CornerRadius="5"
@@ -187,18 +187,18 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"
-                        MouseEnter="go_enter"
-                        MouseLeave="go_leave"
-                        MouseLeftButtonDown="go_down">
-                    <Image Name="go_png"
+                        MouseEnter="bom_nuoc_enter"
+                        MouseLeave="bom_nuoc_leave"
+                        MouseLeftButtonDown="bom_nuoc_down">
+                    <Image Name="bom_nuoc_png"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center">
                         <Image.Source>
-                            <BitmapImage UriSource="png/go_1.png" />
+                            <BitmapImage UriSource="png/bom_nuoc_1.png" />
                         </Image.Source>
                     </Image>
                 </Border>
-                <Border x:Name="dong_vat_trang"
+                <Border x:Name="duong_ong_trang"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_trang}"
                         CornerRadius="5"
@@ -210,7 +210,7 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"></Border>
-                <Border x:Name="dong_vat_den"
+                <Border x:Name="duong_ong_den"
                         Background="#E8E8E8"
                         Style="{StaticResource hieu_ung_bong_den}"
                         CornerRadius="5"
@@ -222,14 +222,14 @@
                         Grid.Column="0"
                         Grid.RowSpan="1"
                         Grid.ColumnSpan="1"
-                        MouseEnter="dong_vat_enter"
-                        MouseLeave="dong_vat_leave"
-                        MouseLeftButtonDown="dong_vat_down">
-                    <Image Name="dong_vat_png"
+                        MouseEnter="duong_ong_enter"
+                        MouseLeave="duong_ong_leave"
+                        MouseLeftButtonDown="duong_ong_down">
+                    <Image Name="duong_ong_png"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center">
                         <Image.Source>
-                            <BitmapImage UriSource="png/dong_vat_1.png" />
+                            <BitmapImage UriSource="png/duong_ong_1.png" />
                         </Image.Source>
                     </Image>
                 </Border>

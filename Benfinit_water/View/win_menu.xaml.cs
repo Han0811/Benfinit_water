@@ -31,10 +31,10 @@ namespace Benfinit_water.View
         }
 
         private bool home = false;
-        private bool hanh_chinh = false;
-        private bool hat_cay = false;
-        private bool go = false;
-        private bool dong_vat = false;
+        private bool quy_hoach = false;
+        private bool dap_nuoc = false;
+        private bool bom_nuoc = false;
+        private bool duong_ong = false;
         private bool ban_do = false;
         private bool he_thong = false;
         private bool menu = true;
@@ -475,178 +475,178 @@ namespace Benfinit_water.View
             var myctrl = new ctrl();
             noi_dung.Content = myctrl;
             home = true;
-            hanh_chinh = false;
-            hat_cay = false;
-            go = false;
-            dong_vat = false;
+            quy_hoach = false;
+            dap_nuoc = false;
+            bom_nuoc = false;
+            duong_ong = false;
             ban_do = false;
             he_thong = false;
             doi_anh("home_png", "png/home_3.png");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_1.png");
-            doi_anh("hat_cay_png", "png/hat_cay_1.png");
-            doi_anh("go_png", "png/go_1.png");
-            doi_anh("dong_vat_png", "png/dong_vat_1.png");
+            doi_anh("quy_hoach_png", "png/quy_hoach_1.png");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_1.png");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_1.png");
+            doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
 
         }
-        private void hanh_chinh_enter(object sender, MouseEventArgs e)
+        private void quy_hoach_enter(object sender, MouseEventArgs e)
         {
-            enter("hanh_chinh_den", "hanh_chinh_trang");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_2.png");
+            enter("quy_hoach_den", "quy_hoach_trang");
+            doi_anh("quy_hoach_png", "png/quy_hoach_2.png");
             
         }
 
-        private void hanh_chinh_leave(object sender, MouseEventArgs e)
+        private void quy_hoach_leave(object sender, MouseEventArgs e)
         {
-            if (hanh_chinh)
+            if (quy_hoach)
             {
-                leave("hanh_chinh_den", "hanh_chinh_trang");
-                doi_anh("hanh_chinh_png", "png/hanh_chinh_3.png");
+                leave("quy_hoach_den", "quy_hoach_trang");
+                doi_anh("quy_hoach_png", "png/quy_hoach_3.png");
             }
             else
             {
-                leave("hanh_chinh_den", "hanh_chinh_trang");
-                doi_anh("hanh_chinh_png", "png/hanh_chinh_1.png");
+                leave("quy_hoach_den", "quy_hoach_trang");
+                doi_anh("quy_hoach_png", "png/quy_hoach_1.png");
             }
 
         }
 
-        private void hanh_chinh_down(object sender, MouseButtonEventArgs e)
+        private void quy_hoach_down(object sender, MouseButtonEventArgs e)
         {
             noi_dung.Content = new ctrl_quy_hoach();
             home = false;
-            hanh_chinh = true;
-            hat_cay = false;
-            go = false;
-            dong_vat = false;
+            quy_hoach = true;
+            dap_nuoc = false;
+            bom_nuoc = false;
+            duong_ong = false;
             ban_do = false;
             he_thong = false;
             doi_anh("home_png", "png/home_1.png");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_3.png");
-            doi_anh("hat_cay_png", "png/hat_cay_1.png");
-            doi_anh("go_png", "png/go_1.png");
-            doi_anh("dong_vat_png", "png/dong_vat_1.png");
+            doi_anh("quy_hoach_png", "png/quy_hoach_3.png");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_1.png");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_1.png");
+            doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
         }
-        private void hat_cay_enter(object sender, MouseEventArgs e)
+        private void dap_nuoc_enter(object sender, MouseEventArgs e)
         {
-            enter("hat_cay_den", "hat_cay_trang");
-            doi_anh("hat_cay_png", "png/hat_cay_2.png");
+            enter("dap_nuoc_den", "dap_nuoc_trang");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_2.png");
             
         }
 
-        private void hat_cay_leave(object sender, MouseEventArgs e)
+        private void dap_nuoc_leave(object sender, MouseEventArgs e)
         {
-            if (hat_cay)
+            if (dap_nuoc)
             {
-                leave("hat_cay_den", "hat_cay_trang");
-                doi_anh("hat_cay_png", "png/hat_cay_3.png");
+                leave("dap_nuoc_den", "dap_nuoc_trang");
+                doi_anh("dap_nuoc_png", "png/dap_nuoc_3.png");
             }
             else
             {
-                leave("hat_cay_den", "hat_cay_trang");
-                doi_anh("hat_cay_png", "png/hat_cay_1.png");
+                leave("dap_nuoc_den", "dap_nuoc_trang");
+                doi_anh("dap_nuoc_png", "png/dap_nuoc_1.png");
             }
 
         }
 
-        private void hat_cay_down(object sender, MouseButtonEventArgs e)
+        private void dap_nuoc_down(object sender, MouseButtonEventArgs e)
         {
             noi_dung.Content = new ctrl_CongTrinh();
             home = false;
-            hanh_chinh = false;
-            hat_cay = true;
-            go = false;
-            dong_vat = false;
+            quy_hoach = false;
+            dap_nuoc = true;
+            bom_nuoc = false;
+            duong_ong = false;
             ban_do = false;
             he_thong = false;
             doi_anh("home_png", "png/home_1.png");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_1.png");
-            doi_anh("hat_cay_png", "png/hat_cay_3.png");
-            doi_anh("go_png", "png/go_1.png");
-            doi_anh("dong_vat_png", "png/dong_vat_1.png");
+            doi_anh("quy_hoach_png", "png/quy_hoach_1.png");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_3.png");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_1.png");
+            doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
         }
-        private void go_enter(object sender, MouseEventArgs e)
+        private void bom_nuoc_enter(object sender, MouseEventArgs e)
         {
-            enter("go_den", "go_trang");
-            doi_anh("go_png", "png/go_2.png");
+            enter("bom_nuoc_den", "bom_nuoc_trang");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_2.png");
         }
 
-        private void go_leave(object sender, MouseEventArgs e)
+        private void bom_nuoc_leave(object sender, MouseEventArgs e)
         {
-            if (go)
+            if (bom_nuoc)
             {
-                leave("go_den", "go_trang");
-                doi_anh("go_png", "png/go_3.png");
+                leave("bom_nuoc_den", "bom_nuoc_trang");
+                doi_anh("bom_nuoc_png", "png/bom_nuoc_3.png");
             }
             else
             {
-                leave("go_den", "go_trang");
-                doi_anh("go_png", "png/go_1.png");
+                leave("bom_nuoc_den", "bom_nuoc_trang");
+                doi_anh("bom_nuoc_png", "png/bom_nuoc_1.png");
             }
 
         }
 
-        private void go_down(object sender, MouseButtonEventArgs e)
+        private void bom_nuoc_down(object sender, MouseButtonEventArgs e)
         {
             var myctrl = new ctrl_TramBom();
             noi_dung.Content = myctrl;
             home = false;
-            hanh_chinh = false;
-            hat_cay = false;
-            go = true;
-            dong_vat = false;
+            quy_hoach = false;
+            dap_nuoc = false;
+            bom_nuoc = true;
+            duong_ong = false;
             ban_do = false;
             he_thong = false;
             doi_anh("home_png", "png/home_1.png");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_1.png");
-            doi_anh("hat_cay_png", "png/hat_cay_1.png");
-            doi_anh("go_png", "png/go_3.png");
-            doi_anh("dong_vat_png", "png/dong_vat_1.png");
+            doi_anh("quy_hoach_png", "png/quy_hoach_1.png");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_1.png");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_3.png");
+            doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
         }
-        private void dong_vat_enter(object sender, MouseEventArgs e)
+        private void duong_ong_enter(object sender, MouseEventArgs e)
         {
-            enter("dong_vat_den", "dong_vat_trang");
-            doi_anh("dong_vat_png", "png/dong_vat_2.png");
+            enter("duong_ong_den", "duong_ong_trang");
+            doi_anh("duong_ong_png", "png/duong_ong_2.png");
         }
 
-        private void dong_vat_leave(object sender, MouseEventArgs e)
+        private void duong_ong_leave(object sender, MouseEventArgs e)
         {
-            if (dong_vat)
+            if (duong_ong)
             {
-                leave("dong_vat_den", "dong_vat_trang");
-                doi_anh("dong_vat_png", "png/dong_vat_3.png");
+                leave("duong_ong_den", "duong_ong_trang");
+                doi_anh("duong_ong_png", "png/duong_ong_3.png");
             }
             else
             {
-                leave("dong_vat_den", "dong_vat_trang");
-                doi_anh("dong_vat_png", "png/dong_vat_1.png");
+                leave("duong_ong_den", "duong_ong_trang");
+                doi_anh("duong_ong_png", "png/duong_ong_1.png");
             }
 
         }
 
-        private void dong_vat_down(object sender, MouseButtonEventArgs e)
+        private void duong_ong_down(object sender, MouseButtonEventArgs e)
         {
             var myctrl = new ctrl_DuongOng();
             noi_dung.Content = myctrl;
             home = false;
-            hanh_chinh = false;
-            hat_cay = false;
-            go = false;
-            dong_vat = true;
+            quy_hoach = false;
+            dap_nuoc = false;
+            bom_nuoc = false;
+            duong_ong = true;
             ban_do = false;
             he_thong = false;
             doi_anh("home_png", "png/home_1.png");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_1.png");
-            doi_anh("hat_cay_png", "png/hat_cay_1.png");
-            doi_anh("go_png", "png/go_1.png");
-            doi_anh("dong_vat_png", "png/dong_vat_3.png");
+            doi_anh("quy_hoach_png", "png/quy_hoach_1.png");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_1.png");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_1.png");
+            doi_anh("duong_ong_png", "png/duong_ong_3.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
         }
@@ -676,17 +676,17 @@ namespace Benfinit_water.View
             var myctrl = new MapControlUserControl();
             noi_dung.Content = myctrl;
             home = false;
-            hanh_chinh = false;
-            hat_cay = false;
-            go = false;
-            dong_vat = false;
+            quy_hoach = false;
+            dap_nuoc = false;
+            bom_nuoc = false;
+            duong_ong = false;
             ban_do = true;
             he_thong = false;
             doi_anh("home_png", "png/home_1.png");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_1.png");
-            doi_anh("hat_cay_png", "png/hat_cay_1.png");
-            doi_anh("go_png", "png/go_1.png");
-            doi_anh("dong_vat_png", "png/dong_vat_1.png");
+            doi_anh("quy_hoach_png", "png/quy_hoach_1.png");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_1.png");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_1.png");
+            doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_3.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
         }
@@ -716,17 +716,17 @@ namespace Benfinit_water.View
             var myctrl = new ctrl();
             noi_dung.Content = myctrl;
             home = false;
-            hanh_chinh = false;
-            hat_cay = false;
-            go = false;
-            dong_vat = false;
+            quy_hoach = false;
+            dap_nuoc = false;
+            bom_nuoc = false;
+            duong_ong = false;
             ban_do = false;
             he_thong = true;
             doi_anh("home_png", "png/home_1.png");
-            doi_anh("hanh_chinh_png", "png/hanh_chinh_1.png");
-            doi_anh("hat_cay_png", "png/hat_cay_1.png");
-            doi_anh("go_png", "png/go_1.png");
-            doi_anh("dong_vat_png", "png/dong_vat_1.png");
+            doi_anh("quy_hoach_png", "png/quy_hoach_1.png");
+            doi_anh("dap_nuoc_png", "png/dap_nuoc_1.png");
+            doi_anh("bom_nuoc_png", "png/bom_nuoc_1.png");
+            doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_3.png");
         }
@@ -870,9 +870,9 @@ namespace Benfinit_water.View
 
         private void dang_xuat_down(object sender, MouseButtonEventArgs e)
         {
-            
-
-
+            win_dang_nhap mywin= new win_dang_nhap();
+            mywin.Show();
+            this.Close();
 
         }
 

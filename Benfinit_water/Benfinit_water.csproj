@@ -12,19 +12,16 @@
     <None Remove="View\png\ban_do_1.png" />
     <None Remove="View\png\ban_do_2.png" />
     <None Remove="View\png\ban_do_3.png" />
+    <None Remove="View\png\bom_nuoc_1.png" />
+    <None Remove="View\png\bom_nuoc_2.png" />
+    <None Remove="View\png\bom_nuoc_3.png" />
     <None Remove="View\png\check.png" />
-    <None Remove="View\png\dong_vat_1.png" />
-    <None Remove="View\png\dong_vat_2.png" />
-    <None Remove="View\png\dong_vat_3.png" />
-    <None Remove="View\png\go_1.png" />
-    <None Remove="View\png\go_2.png" />
-    <None Remove="View\png\go_3.png" />
-    <None Remove="View\png\hanh_chinh_1.png" />
-    <None Remove="View\png\hanh_chinh_2.png" />
-    <None Remove="View\png\hanh_chinh_3.png" />
-    <None Remove="View\png\hat_cay_1.png" />
-    <None Remove="View\png\hat_cay_2.png" />
-    <None Remove="View\png\hat_cay_3.png" />
+    <None Remove="View\png\dap_nuoc_1.png" />
+    <None Remove="View\png\dap_nuoc_2.png" />
+    <None Remove="View\png\dap_nuoc_3.png" />
+    <None Remove="View\png\duong_ong_1.png" />
+    <None Remove="View\png\duong_ong_2.png" />
+    <None Remove="View\png\duong_ong_3.png" />
     <None Remove="View\png\he_thong_1.png" />
     <None Remove="View\png\he_thong_2.png" />
     <None Remove="View\png\he_thong_3.png" />
@@ -34,9 +31,51 @@
     <None Remove="View\png\nguoi_dung_1.png" />
     <None Remove="View\png\nguoi_dung_2.png" />
     <None Remove="View\png\nguoi_dung_3.png" />
+    <None Remove="View\png\quy_hoach_1.png" />
+    <None Remove="View\png\quy_hoach_2.png" />
+    <None Remove="View\png\quy_hoach_3.png" />
     <None Remove="View\png\seach_1.png" />
     <None Remove="View\png\seach_2.png" />
     <None Remove="View\png\seach_3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="View\png\bom_nuoc_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\bom_nuoc_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\bom_nuoc_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\dap_nuoc_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\dap_nuoc_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\dap_nuoc_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\duong_ong_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\duong_ong_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\duong_ong_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\quy_hoach_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\quy_hoach_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\png\quy_hoach_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -60,42 +99,6 @@
     <Resource Include="View\png\check.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\png\dong_vat_1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\dong_vat_2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\dong_vat_3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\go_1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\go_2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\go_3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\hanh_chinh_1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\hanh_chinh_2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\hanh_chinh_3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\hat_cay_1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\hat_cay_2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\hat_cay_3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="View\png\he_thong_1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -114,15 +117,15 @@
     <Resource Include="View\png\home_3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\png\nguoi_dung_1.png">
+    <Content Include="View\png\nguoi_dung_1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\nguoi_dung_2.png">
+    </Content>
+    <Content Include="View\png\nguoi_dung_2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\png\nguoi_dung_3.png">
+    </Content>
+    <Content Include="View\png\nguoi_dung_3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Resource Include="View\png\seach_1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
