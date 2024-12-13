@@ -56,23 +56,19 @@ namespace Benfinit_water.View
             FirstName_tb.Text = myuser.FirstName.ToString();
             LastName_tb.Text = myuser.LastName.ToString();
         }
-        public static bool ischange(string _object, string target)
-        {
-            if (_object != target) return false;
-            else return true;
-        }
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Khai báo biến để truyền vào SQL
-            string lastName = ischange(LastName_tb.Text, myuser.LastName) ? LastName_tb.Text : null;
-            string firstName = ischange(FirstName_tb.Text, myuser.FirstName) ? FirstName_tb.Text : null;
-            string address = ischange(Address_tb.Text, myuser.Address) ? Address_tb.Text : null;
-            string email = ischange(Email_tb.Text, myuser.Email) ? Email_tb.Text : null;
-            string username = ischange(UserName_tb.Text, myuser.UserName) ? UserName_tb.Text : null;
-            string phone = ischange(Phone_tb.Text, myuser.Phone) ? Phone_tb.Text : null;
-            string password = ischange(Password_tb.Text, myuser.Password) ? Password_tb.Text : null;
+            string lastName = _thong_tin_user.ischange(LastName_tb.Text, myuser.LastName) ? LastName_tb.Text : null;
+            string firstName = _thong_tin_user.ischange(FirstName_tb.Text, myuser.FirstName) ? FirstName_tb.Text : null;
+            string address = _thong_tin_user.ischange(Address_tb.Text, myuser.Address) ? Address_tb.Text : null;
+            string email = _thong_tin_user.ischange(Email_tb.Text, myuser.Email) ? Email_tb.Text : null;
+            string username = _thong_tin_user.ischange(UserName_tb.Text, myuser.UserName) ? UserName_tb.Text : null;
+            string phone = _thong_tin_user.ischange(Phone_tb.Text, myuser.Phone) ? Phone_tb.Text : null;
+            string password = _thong_tin_user.ischange(Password_tb.Text, myuser.Password) ? Password_tb.Text : null;
             int donViCongTac = myuser.DonViCongTac; // Giá trị mặc định là giá trị cũ
-            if (ischange(DonViCongTac_tb.Text, myuser.DonViCongTac.ToString()) &&
+            if (_thong_tin_user.ischange(DonViCongTac_tb.Text, myuser.DonViCongTac.ToString()) &&
                 int.TryParse(DonViCongTac_tb.Text, out int parsedValue))
             {
                 donViCongTac = parsedValue; // Nếu chuyển đổi thành công, gán giá trị mới
