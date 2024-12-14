@@ -38,30 +38,32 @@ namespace Benfinit_water.Model
             return dataTable;
         }
 
-        //public void AddQuy_hoach(string TenKyQuyHoach, string ThoiGian, string MoTa)
-        //{
-        //    try
-        //    {
-        //        using (MySqlConnection connection = new MySqlConnection(connectionString))
-        //        {
-        //            connection.Open();
-        //            string sql = "INSERT INTO quyhoach (TenKyQuyHoach, ThoiGian, MoTa) VALUES (@TenKyQuyHoach, @ThoiGian, @MoTa)";
-        //            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-        //            {
-        //                cmd.Parameters.AddWithValue("@TenKyQuyHoach", TenKyQuyHoach);
+        public void AddTramBom(string TenTramBom, float CongSuat, int SoMayBom, string ViTri, int ID_CongTrinh)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string sql = "INSERT INTO trambom (TenTramBom, CongSuat, SoMayBom, ViTri, ID_CongTrinh) VALUES (@TenTramBom, @CongSuat, @SoMayBom, @ViTri, @ID_CongTrinh)";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@TenTramBom", TenTramBom);
 
-        //                cmd.Parameters.AddWithValue("@ThoiGian", ThoiGian);
+                        cmd.Parameters.AddWithValue("@CongSuat", CongSuat);
 
-        //                cmd.Parameters.AddWithValue("@MoTa", MoTa);
-        //                cmd.ExecuteNonQuery();
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Lỗi khi thêm dữ liệu: " + ex.Message);
-        //    }
-        //}
+                        cmd.Parameters.AddWithValue("@SoMayBom", SoMayBom);
+                        cmd.Parameters.AddWithValue("@ViTri", ViTri);
+                        cmd.Parameters.AddWithValue("@ID_CongTrinh", ID_CongTrinh);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thêm dữ liệu: " + ex.Message);
+            }
+        }
 
         public void DeleteCongTrinh(string id)
         {

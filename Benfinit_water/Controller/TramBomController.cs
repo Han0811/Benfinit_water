@@ -22,6 +22,11 @@ namespace Benfinit_water.Controller
             return model.GetAllTramBom();
         }
 
+        public void AddTramBom(string TenTramBom, float CongSuat, int SoMayBom, string ViTri, int ID_CongTrinh)
+        {
+            model.AddTramBom(TenTramBom, CongSuat, SoMayBom, ViTri, ID_CongTrinh);
+        }
+
         public void DeleteTramBom(String id)
         {
             model.DeleteCongTrinh(id);
