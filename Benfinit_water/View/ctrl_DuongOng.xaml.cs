@@ -24,6 +24,7 @@ namespace Benfinit_water.View
     {
         private DuongOngController controller;
         private bool isAdding;
+        private DataTable originalData;
 
         public ctrl_DuongOng()
         {
@@ -37,6 +38,7 @@ namespace Benfinit_water.View
             try
             {
                 DataTable data = controller.LoadAllDuongOng();
+                originalData = data.Copy();
                 dataGrid.ItemsSource = data.DefaultView;
             }
             catch (Exception ex)
@@ -44,6 +46,36 @@ namespace Benfinit_water.View
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchKeyword = txtSearch.Text.ToLower(); // Lấy từ khóa tìm kiếm và chuyển thành chữ thường
+
+            if (!string.IsNullOrEmpty(searchKeyword))
+            {
+                // Lọc dữ liệu theo cột "Tên sản phẩm" (TenCongTrinh)
+                var filteredRows = originalData.AsEnumerable()
+                    .Where(row => row["TenDuongOng"].ToString().ToLower().Contains(searchKeyword));
+
+                if (filteredRows.Any())
+                {
+                    // Tạo DataTable từ kết quả lọc
+                    var filteredData = filteredRows.CopyToDataTable();
+                    dataGrid.ItemsSource = filteredData.DefaultView; // Cập nhật DataGrid
+                }
+                else
+                {
+                    // Nếu không tìm thấy kết quả, hiển thị DataGrid rỗng
+                    dataGrid.ItemsSource = null;
+                }
+            }
+            else
+            {
+                // Nếu ô tìm kiếm rỗng, hiển thị lại dữ liệu gốc
+                dataGrid.ItemsSource = originalData.DefaultView;
+            }
+        }
+
 
         private void ChiTiet_Click(object sender, RoutedEventArgs e)
         {

@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Benfinit_water.Controller;
+using static MaterialDesignThemes.Wpf.Theme;
+using Button = System.Windows.Controls.Button;
 
 namespace Benfinit_water.View
 {
@@ -24,6 +26,7 @@ namespace Benfinit_water.View
     {
         private CongTrinhController controller;
         private bool isAdding;
+        private DataTable originalData;
 
         public ctrl_CongTrinh()
         {
@@ -37,11 +40,41 @@ namespace Benfinit_water.View
             try
             {
                 DataTable data = controller.LoadAllConTrinh();
+                originalData = data.Copy();
                 dataGrids.ItemsSource = data.DefaultView;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchKeyword = txtSearch.Text.ToLower(); // Lấy từ khóa tìm kiếm và chuyển thành chữ thường
+
+            if (!string.IsNullOrEmpty(searchKeyword))
+            {
+                // Lọc dữ liệu theo cột "Tên sản phẩm" (TenCongTrinh)
+                var filteredRows = originalData.AsEnumerable()
+                    .Where(row => row["TenCongTrinh"].ToString().ToLower().Contains(searchKeyword));
+
+                if (filteredRows.Any())
+                {
+                    // Tạo DataTable từ kết quả lọc
+                    var filteredData = filteredRows.CopyToDataTable();
+                    dataGrids.ItemsSource = filteredData.DefaultView; // Cập nhật DataGrid
+                }
+                else
+                {
+                    // Nếu không tìm thấy kết quả, hiển thị DataGrid rỗng
+                    dataGrids.ItemsSource = null;
+                }
+            }
+            else
+            {
+                // Nếu ô tìm kiếm rỗng, hiển thị lại dữ liệu gốc
+                dataGrids.ItemsSource = originalData.DefaultView;
             }
         }
 

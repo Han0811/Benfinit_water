@@ -58,9 +58,38 @@
         </Style>
     </UserControl.Resources>
     <StackPanel>
-        <Button x:Name="btnAdd" Content="Add" Width="100" Height="40" Margin="600,10,10,10"
+        <Grid>
+            <TextBox Name="txtSearch" 
+         Margin="133,15,400,10" 
+         TextChanged="SearchTextBox_TextChanged"
+         Padding="5"
+         Background="White"
+         BorderBrush="Gray" 
+         BorderThickness="1">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <!-- Bo góc và hiệu ứng đổ bóng -->
+                            <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="3" Opacity="0.2" />
+                                </Border.Effect>
+                            </Border>
+                            <!-- Hiển thị nội dung của TextBox -->
+                            <ScrollViewer Margin="5" x:Name="PART_ContentHost" />
+                        </Grid>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+
+
+            <Button x:Name="btnAdd" Content="Add" Width="100" Height="40" Margin="600,10,10,10"
 Click="btnAdd_Click" Style="{StaticResource RoundedButtonWithShadow}" RenderTransformOrigin="0.565,0.581" />
 
+        </Grid>
         <Grid>
             <!-- DataGrid -->
             <DataGrid x:Name="dataGrids" AutoGenerateColumns="False"
