@@ -39,14 +39,12 @@ namespace Benfinit_water.View
 
             // Khởi tạo danh sách người dùng
             users = _userprovider.GetUsers();
-
             // Tìm kiếm người dùng với ID từ danh sách
             myuser = _thong_tin_user.GetUserById(ID, users);
             Id_tb.Text = myuser.Id.ToString();
             IsAdmin_tb.Text = myuser.IsAdmin.ToString();
             UserName_tb.Text = myuser.UserName.ToString();
             IsActive_tb.Text = myuser.IsActive.ToString();
-
             DonViCongTac_tb.Text = myuser.DonViCongTac.ToString();
             Address_tb.Text = myuser.Address.ToString();
             Email_tb.Text = myuser.Email.ToString();
