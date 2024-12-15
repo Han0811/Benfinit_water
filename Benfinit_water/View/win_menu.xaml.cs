@@ -713,7 +713,7 @@ namespace Benfinit_water.View
 
         private void he_thong_down(object sender, MouseButtonEventArgs e)
         {
-            var myctrl = new ctrl();
+            var myctrl = new ctrl_DapTran();
             noi_dung.Content = myctrl;
             home = false;
             quy_hoach = false;
