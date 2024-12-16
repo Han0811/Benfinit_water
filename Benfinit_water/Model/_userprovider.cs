@@ -77,13 +77,18 @@ namespace Benfinit_water.Model
 
             return users;
         }
-       
-   
- 
 
-        public static bool f_sql(
+
+        public static bool IsBool(int value)
+        {
+            return value == 1 || value == 0; // Trả về true nếu là boolean hợp lệ
+        }
+
+
+
+        public static bool ff_sql(
     string lastName, string firstName, string address, string email,
-    string username, string phone, string password, bool isAdmin, bool isActive,
+    string username, string phone, string password, int isAdmin, int isActive,
     int donViCongTac, int mode, int userId, int targetId, bool is_update_user)
         {
             try
@@ -102,19 +107,15 @@ namespace Benfinit_water.Model
                         // Thêm tham số cho các trường cần chấp nhận giá trị null
                         if (is_update_user)
                         { 
-                            cmd.Parameters.AddWithValue("@_is_admin", isAdmin);
-                            cmd.Parameters.AddWithValue("@_is_active", isActive);
                             cmd.Parameters.AddWithValue("@_don_vi_cong_tac", donViCongTac);
                         }
                         else
                         {
-                            // Chấp nhận giá trị null khi không phải cập nhật
-                       
-                            
-                            cmd.Parameters.AddWithValue("@_is_admin", DBNull.Value);
-                            cmd.Parameters.AddWithValue("@_is_active", DBNull.Value);
+
                             cmd.Parameters.AddWithValue("@_don_vi_cong_tac", DBNull.Value);
                         }
+                        cmd.Parameters.AddWithValue("@_is_active", IsBool(isActive) ? isActive : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@_is_admin", IsBool(isAdmin) ? isAdmin : DBNull.Value);
 
                         // Chấp nhận giá trị null cho _user_name nếu không có giá trị
                         cmd.Parameters.AddWithValue("@_user_name", string.IsNullOrEmpty(username) ? DBNull.Value : username);

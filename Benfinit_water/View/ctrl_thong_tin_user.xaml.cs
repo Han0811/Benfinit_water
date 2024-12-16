@@ -104,9 +104,9 @@ namespace Benfinit_water.View
 
 
             // Gọi phương thức f_sql
-            if (_userprovider.f_sql(
+            if (_userprovider.ff_sql(
                 lastName, firstName, address, email, username,
-                phone, password, myuser.IsAdmin, myuser.IsActive, donViCongTac,
+                phone, password, myuser.IsAdmin?1:0, myuser.IsActive?1:0, donViCongTac,
                 mode, userId, targetId, is_update_user)) MessageBox.Show("Cập nhật thành công");
             else MessageBox.Show("Cập nhật thất bại");
 

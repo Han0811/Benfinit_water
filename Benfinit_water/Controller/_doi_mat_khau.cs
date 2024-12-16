@@ -48,7 +48,7 @@ namespace Benfinit_water.Controller
             .Where(u => u.UserName == username)
             .Select(u => u.Id)
             .FirstOrDefault();
-            return _userprovider.f_sql(null,null,null,null, null, null,newPassword,false,false,0,0,Id,Id,false);
+            return _userprovider.ff_sql(null,null,null,null, null, null,newPassword,2,2,0,0,Id,Id,false);
             
         }
     }

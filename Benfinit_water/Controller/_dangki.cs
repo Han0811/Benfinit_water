@@ -37,7 +37,7 @@ namespace Benfinit_water.Controller
                             string username, string phone, string password
                             )
         {
-            return _userprovider.f_sql(lastName, firstName, address, email, username, phone, password, false, false, 0, 1, 0, 0, true);
+            return _userprovider.ff_sql(lastName, firstName, address, email, username, phone, password,2, 2, 0, 1, 0, 0, true);
         }
         public static bool IsUserExistsPhone(string phone)
         {

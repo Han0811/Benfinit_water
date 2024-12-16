@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
+using Benfinit_water.Model;
 
 namespace Benfinit_water.View
 {
@@ -25,9 +26,22 @@ namespace Benfinit_water.View
         public win_menu(int _id)
         {
             InitializeComponent();
-            MessageBox.Show(_id.ToString());
+            
             id = _id;
-            MessageBox.Show(id.ToString());
+            this.Closing += MainWindow_Closing;
+
+        }
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to close?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.No)
+            {
+                e.Cancel = true; // Ngăn không cho cửa sổ đóng
+            }else
+            {
+                _userprovider.ff_sql(null, null, null, null, null, null, null, 2, 0, 2, 0, id, id, false);
+            }
         }
 
         private bool home = false;
@@ -472,8 +486,8 @@ namespace Benfinit_water.View
 
         private void home_down(object sender, MouseButtonEventArgs e)
         {
-            var myctrl = new ctrl();
-            noi_dung.Content = myctrl;
+            
+            
             home = true;
             quy_hoach = false;
             dap_nuoc = false;
@@ -488,6 +502,8 @@ namespace Benfinit_water.View
             doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
+            var myctrl = new ctrl_lich_su_tac_dong_he_thong(id);
+            noi_dung.Content = myctrl;
 
         }
         private void quy_hoach_enter(object sender, MouseEventArgs e)

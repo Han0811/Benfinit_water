@@ -214,7 +214,9 @@ namespace Benfinit_water.View
                     .Where(u => u.UserName == username)
                     .Select(u => u.Id)
                     .FirstOrDefault();
+                    
                     win_menu mywin = new win_menu(userId);
+                    _userprovider.ff_sql(null, null, null, null, null, null, null, 2, 1, 2, 0, userId, userId, false);
                     mywin.Show();
                     newscreen.Close();
                 }
