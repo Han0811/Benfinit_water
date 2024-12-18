@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Benfinit_water.Model;
 using System.Windows;
-using MySql.Data.MySqlClient;
+
 using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Security.Cryptography;
