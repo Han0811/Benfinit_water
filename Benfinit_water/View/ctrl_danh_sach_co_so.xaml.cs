@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Benfinit_water.Model;
+using Benfinit_water.View;
 namespace Benfinit_water.View
 {
     /// <summary>
@@ -21,11 +22,13 @@ namespace Benfinit_water.View
     public partial class ctrl_danh_sach_co_so : UserControl
     {
         internal List<_CoSoModel> newCoSo = _CoSoProvider.getCoSo();
-        public ctrl_danh_sach_co_so()
+        public int id;
+        public ctrl_danh_sach_co_so(int _id)
         {
             
             
             InitializeComponent();
+            id = _id;
             listBoxCoSo.ItemsSource = newCoSo;
         }
        
@@ -37,8 +40,8 @@ namespace Benfinit_water.View
             // Kiểm tra nếu có mục nào được chọn
             if (selectedItem != null)
             {
-                // Hiển thị thông báo với ID của mục đã chọn
-                MessageBox.Show($"Bạn đã chọn ID: {selectedItem.id}", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                win_CapNhatCoSo mywin = new win_CapNhatCoSo(selectedItem.id,id);
+                mywin.Show();
             }
         }
     }

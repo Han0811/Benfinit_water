@@ -1,0 +1,33 @@
+﻿<Window x:Class="Benfinit_water.View.win_CapNhatCoSo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Benfinit_water.View"
+        mc:Ignorable="d"
+        Title="win_CapNhatCoSo"
+        Height="200"
+        Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock x:Name="idtbl">Mã hành chính</TextBlock>
+            <TextBlock x:Name="nametbl">Tên</TextBlock>
+            <TextBlock x:Name="muc_do_hanh_chinh_idtbl">Cấp</TextBlock>
+            <TextBlock x:Name="truc_thuoc">Trực thuộc</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBox x:Name="idtbx" IsEnabled="False"></TextBox>
+            <TextBox x:Name="nametbx"></TextBox>
+            <TextBox x:Name="muc_do_hanh_chinh_idtbx"></TextBox>
+            <TextBox x:Name="truc_thuoctbx"></TextBox>
+            <Button Grid.ColumnSpan="2"
+                    Click="Button_Click">Cập nhật thông tin</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

@@ -7,17 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid>
-        <ListBox x:Name="mylist">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding data}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+    <ListView x:Name="mylist"
+              Margin="10">
+        <ListView.View>
+            <GridView>
+                <!-- Cột 1: ID -->
+                <GridViewColumn Header="ID"
+                                DisplayMemberBinding="{Binding id}"
+                                Width="50" />
+
+                <!-- Cột 2: Data -->
+                <GridViewColumn Header="Data"
+                                DisplayMemberBinding="{Binding data}"
+                                Width="200" />
+
+                <!-- Cột 3: Action Type -->
+                <GridViewColumn Header="Action Type"
+                                DisplayMemberBinding="{Binding action_type}"
+                                Width="250" />
+
+                <!-- Cột 4: Access Time -->
+                <GridViewColumn Header="Access Time"
+                                DisplayMemberBinding="{Binding access_time}"
+                                Width="200" />
+            </GridView>
+        </ListView.View>
+    </ListView>
 
 
 </UserControl>

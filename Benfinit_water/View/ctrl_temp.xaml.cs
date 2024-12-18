@@ -34,7 +34,7 @@ namespace Benfinit_water.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            noi_dung.Content = new ctrl_danh_sach_co_so();
+            noi_dung.Content = new ctrl_danh_sach_co_so(id);
         }
     }
 }

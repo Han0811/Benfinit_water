@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Benfinit_water.Model;
 using MySql.Data.MySqlClient;
+using Benfinit_water.View;
 
 namespace Benfinit_water.Model
 {
@@ -59,6 +60,76 @@ namespace Benfinit_water.Model
             
             return coSoList;
         }
+        public static List<_CoSoModel> FindCoSoById(List<_CoSoModel> list, int id)
+        {
+            // Tìm tất cả các phần tử có id bằng giá trị cụ thể
+            return list.Where(x => x.id == id).ToList();
+        }
+        public static _CoSoModel FindCoSoFirstById(List<_CoSoModel> list, int id)
+        {
+            // Tìm phần tử đầu tiên có id khớp với giá trị được chỉ định
+            return list.FirstOrDefault(x => x.id == id);
+        }
+        public static bool f_coso(
+     int mode,
+     int id,
+     int idTarget,
+     string name = null,
+     int? mucDoHanhChinhId = null,
+     int? trucThuoc = null)
+        {
+           
+            string temp =null;
+            // Chuỗi kết nối đến MySQL
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+           
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Tạo một đối tượng Command để gọi stored procedure
+                    using (MySqlCommand cmd = new MySqlCommand("f_co_so", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        // Thêm các tham số cho stored procedure
+                        cmd.Parameters.AddWithValue("mode", mode);
+                        cmd.Parameters.AddWithValue("_id", id);
+                        cmd.Parameters.AddWithValue("_id_target", idTarget);
+
+                        // Các tham số có thể NULL
+                        cmd.Parameters.AddWithValue("_name", string.IsNullOrEmpty(name) ? DBNull.Value : name);
+                        cmd.Parameters.AddWithValue("_muc_do_hanh_chinh_id", mucDoHanhChinhId.HasValue ? mucDoHanhChinhId.Value : DBNull.Value);
+                        cmd.Parameters.AddWithValue("_truc_thuoc", trucThuoc.HasValue ? trucThuoc.Value : DBNull.Value);
+
+                        // Thực thi stored procedure
+                        cmd.ExecuteNonQuery();
+
+                        // Thông báo thành công
+                        
+                        
+                    }
+                }
+                
+            }
+            catch (MySqlException ex)
+            {
+                temp=($"MySQL Error: {ex.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                temp=($"Error: {ex.Message}");
+                return false;
+            }
+            err newerr = new err(temp);
+            newerr.Show();
+            return true;
+        }
+
     }
 
 }

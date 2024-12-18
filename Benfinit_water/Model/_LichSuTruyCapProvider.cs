@@ -27,9 +27,9 @@ namespace Benfinit_water.Model
             string query = null;
             if (myuser.IsAdmin)
             {
-                query = "SELECT data FROM DanhSachLichSuTruyCap";
+                query = "SELECT * FROM DanhSachLichSuTruyCap";
             }
-            else {  query = "SELECT data FROM DanhSachLichSuTruyCap WHERE id = @ID"; }
+            else {  query = "SELECT * FROM DanhSachLichSuTruyCap WHERE id = @ID"; }
 
             
 
@@ -49,7 +49,10 @@ namespace Benfinit_water.Model
                             {
                                 _danhsachlichsutruycap record = new _danhsachlichsutruycap
                                 {
-                                    data = reader.GetString("data")
+                                    data = reader.GetString("data"),
+                                    id = reader.GetInt32("id"),
+                                    action_type = reader.GetString("action_type"),
+                                    access_time = reader.GetDateTime("access_time")
                                 };
 
                                 data.Add(record);
