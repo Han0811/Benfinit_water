@@ -58,56 +58,27 @@ namespace Benfinit_water.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Khai báo biến để truyền vào SQL
-            string lastName = _thong_tin_user.ischange(LastName_tb.Text, myuser.LastName) ? LastName_tb.Text : null;
-            string firstName = _thong_tin_user.ischange(FirstName_tb.Text, myuser.FirstName) ? FirstName_tb.Text : null;
-            string address = _thong_tin_user.ischange(Address_tb.Text, myuser.Address) ? Address_tb.Text : null;
-            string email = _thong_tin_user.ischange(Email_tb.Text, myuser.Email) ? Email_tb.Text : null;
-            string username = _thong_tin_user.ischange(UserName_tb.Text, myuser.UserName) ? UserName_tb.Text : null;
-            string phone = _thong_tin_user.ischange(Phone_tb.Text, myuser.Phone) ? Phone_tb.Text : null;
-            string password = _thong_tin_user.ischange(Password_tb.Text, myuser.Password) ? Password_tb.Text : null;
+            string lastName = !_thong_tin_user.ischange(LastName_tb.Text, myuser.LastName) ? LastName_tb.Text : null;
+            string firstName = !_thong_tin_user.ischange(FirstName_tb.Text, myuser.FirstName) ? FirstName_tb.Text : null;
+            string address = !_thong_tin_user.ischange(Address_tb.Text, myuser.Address) ? Address_tb.Text : null;
+            string email = !_thong_tin_user.ischange(Email_tb.Text, myuser.Email) ? Email_tb.Text : null;
+            string username = !_thong_tin_user.ischange(UserName_tb.Text, myuser.UserName) ? UserName_tb.Text : null;
+            string phone = !_thong_tin_user.ischange(Phone_tb.Text, myuser.Phone) ? Phone_tb.Text : null;
+            string password = !_thong_tin_user.ischange(Password_tb.Text, myuser.Password) ? Password_tb.Text : null;
             int donViCongTac = myuser.DonViCongTac; // Giá trị mặc định là giá trị cũ
-            if (_thong_tin_user.ischange(DonViCongTac_tb.Text, myuser.DonViCongTac.ToString()) &&
-                int.TryParse(DonViCongTac_tb.Text, out int parsedValue))
-            {
-                donViCongTac = parsedValue; // Nếu chuyển đổi thành công, gán giá trị mới
-            }
-
-            bool is_update_user = false;
-            if (myuser.IsAdmin)
-            {
-                is_update_user = true;
-            }
-            else
-            {
-                MessageBox.Show("Bạn không có quyền sửa cơ sở làm việc");
-                Id_tb.Text = myuser.Id.ToString();
-                IsAdmin_tb.Text = myuser.IsAdmin.ToString();
-                UserName_tb.Text = myuser.UserName.ToString();
-                IsActive_tb.Text = myuser.IsActive.ToString();
-
-                DonViCongTac_tb.Text = myuser.DonViCongTac.ToString();
-                Address_tb.Text = myuser.Address.ToString();
-                Email_tb.Text = myuser.Email.ToString();
-                Phone_tb.Text = myuser.Phone.ToString();
-                Password_tb.Text = myuser.Password.ToString();
-                DateJoined_tb.Text = myuser.DateJoined.ToString();
-                FirstName_tb.Text = myuser.FirstName.ToString();
-                LastName_tb.Text = myuser.LastName.ToString();
-                return;
-            }
-
+            
 
             // Các giá trị mặc định
             int mode = 0; // Ví dụ giá trị cập nhật
             int userId = myuser.Id;
             int targetId = myuser.Id;
 
-
+            MessageBox.Show(phone);
             // Gọi phương thức f_sql
             if (_userprovider.ff_sql(
                 lastName, firstName, address, email, username,
-                phone, password, myuser.IsAdmin?1:0, myuser.IsActive?1:0, donViCongTac,
-                mode, userId, targetId, is_update_user)) MessageBox.Show("Cập nhật thành công");
+                phone, password, 2, 2, 2,
+                mode, userId, targetId, false)) MessageBox.Show("Cập nhật thành công");
             else MessageBox.Show("Cập nhật thất bại");
 
             
@@ -129,6 +100,8 @@ namespace Benfinit_water.View
             FirstName_tb.Text = myuser.FirstName.ToString();
             LastName_tb.Text = myuser.LastName.ToString();
         }
+
+        
     }
 
 }
