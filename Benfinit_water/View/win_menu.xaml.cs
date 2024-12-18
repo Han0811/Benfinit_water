@@ -26,6 +26,8 @@ namespace Benfinit_water.View
     {
         public static timkiem newtimkiem = _QuanLyMenuProvider.GetTimKiem(); 
         public int id;
+        private List<usermodel> users;
+        private usermodel myuser;
         public win_menu(int _id)
         {
             InitializeComponent();
@@ -33,7 +35,10 @@ namespace Benfinit_water.View
             
             id = _id;
             this.Closing += MainWindow_Closing;
-            
+            // Khởi tạo danh sách người dùng
+            users = _userprovider.GetUsers();
+            // Tìm kiếm người dùng với ID từ danh sách
+            myuser = _thong_tin_user.GetUserById(id, users);
 
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -868,10 +873,34 @@ namespace Benfinit_water.View
 
         }
 
+        private void admin_down(object sender, MouseButtonEventArgs e)
+        {
+
+            if (myuser.IsAdmin)
+                noi_dung.Content = new ctrl_admin(id);
+            else MessageBox.Show("Bạn không có quyền truy cập");
+        }
+        private void admin_enter(object sender, MouseEventArgs e)
+        {
+            enter("admin_den", "admin_trang");
+
+        }
+
+        private void admin_leave(object sender, MouseEventArgs e)
+        {
+            if (true)
+            {
+                leave("admin_den", "admin_trang");
+
+            }
+
+
+        }
+
         private void thong_tin_down(object sender, MouseButtonEventArgs e)
         {
-            
-            noi_dung.Content=new ctrl_thong_tin_user(id);
+
+            noi_dung.Content = new ctrl_thong_tin_user(id);
         }
         private void dang_xuat_enter(object sender, MouseEventArgs e)
         {

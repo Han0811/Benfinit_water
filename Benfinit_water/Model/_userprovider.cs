@@ -123,7 +123,7 @@ namespace Benfinit_water.Model
                         // Thêm các tham số khác với giá trị có thể là null
                         cmd.Parameters.AddWithValue("@_address", string.IsNullOrEmpty(address) ? DBNull.Value : address);
                         cmd.Parameters.AddWithValue("@_email", string.IsNullOrEmpty(email) ? DBNull.Value : email);
-                        MessageBox.Show(phone);
+                       
                         cmd.Parameters.AddWithValue("@_phone", string.IsNullOrEmpty(phone) ? DBNull.Value : phone);
                         cmd.Parameters.AddWithValue("@_password", string.IsNullOrEmpty(password) ? DBNull.Value : password);
                         cmd.Parameters.AddWithValue("@_first_name", string.IsNullOrEmpty(firstName) ? DBNull.Value : firstName);

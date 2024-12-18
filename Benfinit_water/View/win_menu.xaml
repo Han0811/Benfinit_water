@@ -642,6 +642,32 @@
                                     </Border>
 
                                 </Border>
+                                <Border x:Name="admin_trang"
+                                        Margin="10"
+                                        BorderBrush="#aeaeae"
+                                        BorderThickness="1"
+                                        CornerRadius="25"
+                                        Height="50"
+                                        Width="120"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Grid.Column="1">
+                                    <Border x:Name="admin_den"
+                                            BorderBrush="#aeaeae"
+                                            CornerRadius="25"
+                                            Height="50"
+                                            Width="120"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Grid.Column="1"
+                                            MouseLeftButtonDown="admin_down">
+                                        <TextBlock Text="Super SU"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="20"></TextBlock>
+                                    </Border>
+
+                                </Border>
                                 <Border x:Name="dang_xuat_trang"
                                         Margin="10"
                                         BorderBrush="#aeaeae"
