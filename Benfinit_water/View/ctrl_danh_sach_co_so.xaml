@@ -7,6 +7,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <!-- ListBox để hiển thị danh sách cơ sở -->
+        <ListBox x:Name="listBoxCoSo"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 SelectionChanged="ListBoxCoSo_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <!-- Hiển thị hienthi và id -->
+                        <TextBlock Text="{Binding hienthi}"
+                                   FontWeight="Bold" />
+                        <TextBlock Text="{Binding id}"
+                                   Foreground="Gray" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

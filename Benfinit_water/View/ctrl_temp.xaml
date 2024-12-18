@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Benfinit_water.View.ctrl_lich_su_tac_dong_he_thong"
+﻿<UserControl x:Class="Benfinit_water.View.ctrl_temp"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,18 +6,12 @@
              xmlns:local="clr-namespace:Benfinit_water.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
-    <Grid>
-        <ListBox x:Name="mylist">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding data}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
-
-
+    <StackPanel>
+        <Button Click="Button_Click">Lịch sử truy cập hệ thống</Button>
+        <Button Click="Button_Click_1">Cơ sở hành chính</Button>
+        <Button>Danh sách người dùng</Button>
+        
+        <ContentControl x:Name="noi_dung" Height="380"></ContentControl>
+       
+    </StackPanel>
 </UserControl>

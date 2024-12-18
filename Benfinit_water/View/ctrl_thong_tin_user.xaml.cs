@@ -73,7 +73,7 @@ namespace Benfinit_water.View
             int userId = myuser.Id;
             int targetId = myuser.Id;
 
-            MessageBox.Show(phone);
+            
             // Gọi phương thức f_sql
             if (_userprovider.ff_sql(
                 lastName, firstName, address, email, username,

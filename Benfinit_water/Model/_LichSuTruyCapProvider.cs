@@ -7,7 +7,8 @@ using Benfinit_water.Model;
 using Benfinit_water.View;
 using MySql.Data.MySqlClient;
 using Benfinit_water.View;
-
+using Benfinit_water.Model;
+using Benfinit_water.Controller;
 namespace Benfinit_water.Model
 {
 
@@ -21,8 +22,16 @@ namespace Benfinit_water.Model
             string _connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
             List<_danhsachlichsutruycap> data = new List<_danhsachlichsutruycap>();
+            List <usermodel> users =_userprovider.GetUsers();
+            usermodel myuser= _thong_tin_user.GetUserById(ID, users);
+            string query = null;
+            if (myuser.IsAdmin)
+            {
+                query = "SELECT data FROM DanhSachLichSuTruyCap";
+            }
+            else {  query = "SELECT data FROM DanhSachLichSuTruyCap WHERE id = @ID"; }
 
-            string query = "SELECT data FROM DanhSachLichSuTruyCap WHERE id = @ID";
+            
 
             try
             {

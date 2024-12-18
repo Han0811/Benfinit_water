@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using Benfinit_water.Model;
+using Org.BouncyCastle.Tls;
+using Benfinit_water.Controller;
 
 namespace Benfinit_water.View
 {
@@ -22,13 +24,16 @@ namespace Benfinit_water.View
     /// </summary>
     public partial class win_menu : Window
     {
+        public static timkiem newtimkiem = _QuanLyMenuProvider.GetTimKiem(); 
         public int id;
         public win_menu(int _id)
         {
             InitializeComponent();
             
+            
             id = _id;
             this.Closing += MainWindow_Closing;
+            
 
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -502,7 +507,7 @@ namespace Benfinit_water.View
             doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
-            var myctrl = new ctrl_lich_su_tac_dong_he_thong(id);
+            var myctrl = new ctrl_temp(id);
             noi_dung.Content = myctrl;
 
         }
@@ -892,9 +897,9 @@ namespace Benfinit_water.View
             this.Close();
 
         }
+        
+        private readonly List<string> items = newtimkiem._string;
 
-        //////////// seach box
-        private readonly List<string> items = new List<string> { "con ca", "con cho", "con meo" };
 
         private void btn_seach_enter(object sender, MouseEventArgs e)
         {
@@ -919,7 +924,51 @@ namespace Benfinit_water.View
 
         private void btn_seach_down(object sender, MouseButtonEventArgs e)
         {
+            List<string> temp = _TimKiem.SearchData(newtimkiem._data, SearchBox.Text);
 
+            switch (temp.First())
+            {
+                case "users":
+                    
+                    break;
+
+                case "trambom":
+                    noi_dung.Content = new ctrl_TramBom();
+                    break;
+                case "quyhoach":
+                    noi_dung.Content = new ctrl_quy_hoach();
+                    break;
+                case "muc_do_hanh_chinh":
+                    
+                    break;
+                case "duongong":
+                    noi_dung.Content = new ctrl_DuongOng();
+                    break;
+               
+                case "daptran":
+                    noi_dung.Content = new ctrl_DapTran();
+                    break;
+                case "danhsachlichsutruycap":
+                    noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
+                    break;
+                case "danh_sach_co_so":
+                    
+                    break;
+                case "congtrinhthuyloi":
+                    noi_dung.Content = new ctrl_CongTrinh();
+                    break;
+                case "co_so":
+                    
+                    break;
+
+                case "access_history":
+                    noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
+                    break;
+            
+                default:
+                    
+                    break;
+            }
 
             doi_anh("btn_seach_png", "png/seach_3.png");
             doi_anh("btn_seach_dung_png", "png/seach_3.png");
