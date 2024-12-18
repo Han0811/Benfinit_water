@@ -29,7 +29,7 @@ namespace Benfinit_water.Model
             {
                 query = "SELECT * FROM DanhSachLichSuTruyCap";
             }
-            else {  query = "SELECT * FROM DanhSachLichSuTruyCap WHERE id = @ID"; }
+            else {  query = "SELECT * FROM DanhSachLichSuTruyCap WHERE id_user = @ID"; }
 
             
 

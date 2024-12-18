@@ -595,8 +595,8 @@
                     <Border x:Name="menu_nguoi_dung_trang"
                             Visibility="Collapsed"
                             Margin="0 70 20 0"
-                            Height="150"
-                            Width="140"
+                            Height="auto"
+                            Width="auto"
                             Background="#E8E8E8"
                             Style="{StaticResource hieu_ung_bong_trang}"
                             CornerRadius="25"
@@ -604,8 +604,8 @@
                             VerticalAlignment="Top"
                             Grid.Column="1">
                         <Border x:Name="menu_nguoi_dung_den"
-                                Height="150"
-                                Width="140"
+                                Height="auto"
+                                Width="auto"
                                 Background="#E8E8E8"
                                 Style="{StaticResource hieu_ung_bong_den}"
                                 CornerRadius="25"
@@ -620,20 +620,18 @@
                                         BorderThickness="1"
                                         CornerRadius="25"
                                         Height="50"
-                                        Width="120"
+                                        Width="200"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Grid.Column="1">
                                     <Border x:Name="thong_tin_den"
                                             BorderBrush="#aeaeae"
-                                            
                                             CornerRadius="25"
                                             Height="50"
-                                            Width="120"
+                                            Width="200"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Grid.Column="1"
-                                            
                                             MouseLeftButtonDown="thong_tin_down">
                                         <TextBlock Text="Thông tin"
                                                    HorizontalAlignment="Center"
@@ -642,61 +640,87 @@
                                     </Border>
 
                                 </Border>
-                                <Border x:Name="admin_trang"
-                                        Margin="10"
-                                        BorderBrush="#aeaeae"
-                                        BorderThickness="1"
-                                        CornerRadius="25"
-                                        Height="50"
-                                        Width="120"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Grid.Column="1">
-                                    <Border x:Name="admin_den"
-                                            BorderBrush="#aeaeae"
-                                            CornerRadius="25"
-                                            Height="50"
-                                            Width="120"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Grid.Column="1"
-                                            MouseLeftButtonDown="admin_down">
-                                        <TextBlock Text="Super SU"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="20"></TextBlock>
-                                    </Border>
-
-                                </Border>
-                                <Border x:Name="dang_xuat_trang"
-                                        Margin="10"
-                                        BorderBrush="#aeaeae"
-                                        BorderThickness="1"
-                                        CornerRadius="25"
-                                        Height="50"
-                                        Width="120"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Grid.Column="1">
-                                    <Border x:Name="dang_xuat_den"
+                                
+                                    <Border x:Name="lich_su_trang"
+                                            Margin="10"
                                             BorderBrush="#aeaeae"
                                             BorderThickness="1"
                                             CornerRadius="25"
                                             Height="50"
-                                            Width="120"
+                                            Width="200"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Grid.Column="1"
-                                            
-                                            MouseLeftButtonDown="dang_xuat_down">
-                                        <TextBlock Text="Đăng xuất"
-                                                   HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="20"></TextBlock>
-                                    </Border>
+                                            Grid.Column="1">
+                                        <Border x:Name="lich_su_den"
+                                                BorderBrush="#aeaeae"
+                                                CornerRadius="25"
+                                                Height="50"
+                                                Width="200"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Grid.Column="1"
+                                                MouseLeftButtonDown="lich_su_down">
+                                            <TextBlock Text="Lịch sử tương tác"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="20"></TextBlock>
+                                        </Border>
 
-                                </Border>
-                            </StackPanel>
+                                    </Border>
+                                    <Border x:Name="admin_trang"
+                                            Margin="10"
+                                            BorderBrush="#aeaeae"
+                                            BorderThickness="1"
+                                            CornerRadius="25"
+                                            Height="50"
+                                        Width="200"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Grid.Column="1">
+                                        <Border x:Name="admin_den"
+                                                BorderBrush="#aeaeae"
+                                                CornerRadius="25"
+                                                Height="50"
+                                            Width="200"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Grid.Column="1"
+                                                MouseLeftButtonDown="admin_down">
+                                            <TextBlock Text="Super SU"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="20"></TextBlock>
+                                        </Border>
+
+                                    </Border>
+                                    <Border x:Name="dang_xuat_trang"
+                                            Margin="10"
+                                            BorderBrush="#aeaeae"
+                                            BorderThickness="1"
+                                            CornerRadius="25"
+                                            Height="50"
+                                        Width="200"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Grid.Column="1">
+                                        <Border x:Name="dang_xuat_den"
+                                                BorderBrush="#aeaeae"
+                                                BorderThickness="1"
+                                                CornerRadius="25"
+                                                Height="50"
+                                            Width="200"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Grid.Column="1"
+                                                MouseLeftButtonDown="dang_xuat_down">
+                                            <TextBlock Text="Đăng xuất"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="20"></TextBlock>
+                                        </Border>
+
+                                    </Border>
+                                </StackPanel>
                         </Border>
 
                     </Border>

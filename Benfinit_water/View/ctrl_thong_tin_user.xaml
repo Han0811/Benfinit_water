@@ -166,7 +166,7 @@
                          Grid.Column="1"></TextBox>
             </Grid>
             <Button Click="Button_Click">Cập nhật thông tin</Button>
-
+            <Button Click="Button_Click_1">Xóa tài khoản</Button>
         </StackPanel>
     </Grid>
 </UserControl>

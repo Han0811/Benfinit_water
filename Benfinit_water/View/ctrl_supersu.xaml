@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Benfinit_water.View.ctrl_danh_sach_co_so"
+﻿<UserControl x:Class="Benfinit_water.View.ctrl_supersu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,23 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <Button Click="Button_Click" Height="30">Thêm mới</Button>
-        
+       
         <ListView x:Name="listBoxCoSo"
                   Margin="10"
                   SelectionChanged="ListBoxCoSo_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID"
-                                    DisplayMemberBinding="{Binding id}"
-                                    Width="50" />
-                    <GridViewColumn Header="Data"
-                                    DisplayMemberBinding="{Binding hienthi}"
+                                    DisplayMemberBinding="{Binding Id}"
                                     Width="auto" />
+                    <GridViewColumn Header="Tên người dùng"
+                                    DisplayMemberBinding="{Binding UserName}"
+                                    Width="auto" />
+                    <GridViewColumn Header="Admin"
+                                    DisplayMemberBinding="{Binding IsAdmin}"
+                                    Width="auto" />
+                    <GridViewColumn Header="Đơn vị công tác"
+                                    DisplayMemberBinding="{Binding DonViCongTac}"
+                                    Width="auto" />
+     
                 </GridView>
             </ListView.View>
         </ListView>
     </StackPanel>
-
-
 </UserControl>

@@ -512,7 +512,7 @@ namespace Benfinit_water.View
             doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
-            var myctrl = new ctrl_temp(id);
+            var myctrl = new ctrl_danh_sach_co_so(id);
             noi_dung.Content = myctrl;
 
         }
@@ -869,17 +869,34 @@ namespace Benfinit_water.View
                 leave("thong_tin_den", "thong_tin_trang");
 
             }
-
-
         }
-
-        private void admin_down(object sender, MouseButtonEventArgs e)
+        private void lich_su_down(object sender, MouseButtonEventArgs e)
         {
 
-            if (myuser.IsAdmin)
-                noi_dung.Content = new ctrl_admin(id);
-            else MessageBox.Show("Bạn không có quyền truy cập");
+            noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong (id);
         }
+        private void lich_su_enter(object sender, MouseEventArgs e)
+        {
+            enter("lich_su_den", "lich_su_trang");
+
+        }
+
+        private void lich_su_leave(object sender, MouseEventArgs e)
+        {
+            if (true)
+            {
+                leave("lich_su_den", "lich_su_trang");
+
+            }
+
+
+        }
+        private void thong_tin_down(object sender, MouseButtonEventArgs e)
+        {
+
+            noi_dung.Content = new ctrl_thong_tin_user(id);
+        }
+
         private void admin_enter(object sender, MouseEventArgs e)
         {
             enter("admin_den", "admin_trang");
@@ -896,12 +913,14 @@ namespace Benfinit_water.View
 
 
         }
-
-        private void thong_tin_down(object sender, MouseButtonEventArgs e)
+        private void admin_down(object sender, MouseButtonEventArgs e)
         {
 
-            noi_dung.Content = new ctrl_thong_tin_user(id);
+            if (myuser.IsAdmin)
+                noi_dung.Content = new ctrl_supersu(id);
+            else MessageBox.Show("Bạn không có quyền truy cập");
         }
+
         private void dang_xuat_enter(object sender, MouseEventArgs e)
         {
             enter("dang_xuat_den", "dang_xuat_trang");
@@ -922,8 +941,9 @@ namespace Benfinit_water.View
         private void dang_xuat_down(object sender, MouseButtonEventArgs e)
         {
             win_dang_nhap mywin= new win_dang_nhap();
-            mywin.Show();
+            
             this.Close();
+            mywin.Show();
 
         }
         
@@ -954,7 +974,7 @@ namespace Benfinit_water.View
         private void btn_seach_down(object sender, MouseButtonEventArgs e)
         {
             List<string> temp = _TimKiem.SearchData(newtimkiem._data, SearchBox.Text);
-
+            if (temp.First() is null) return;
             switch (temp.First())
             {
                 case "users":

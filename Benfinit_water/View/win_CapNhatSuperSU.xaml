@@ -1,0 +1,49 @@
+﻿<Window x:Class="Benfinit_water.View.win_CapNhatSuperSU"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Benfinit_water.View"
+        mc:Ignorable="d"
+        Title="win_CapNhatSuperSU" Height="400" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBox x:Name="idtbl"
+                     FontSize="15"
+                     IsEnabled="False">ID</TextBox>
+            <TextBox x:Name="usernametbl"
+                     FontSize="15"
+                     IsEnabled="False">User name</TextBox>
+            <TextBox x:Name="adminidtbl"
+                     FontSize="15"
+                     IsEnabled="False">Admin</TextBox>
+            <TextBox x:Name="donvicongtactbl"
+                     FontSize="15"
+                     IsEnabled="False">Đơn vị công tác</TextBox>
+            <Button Grid.ColumnSpan="2"
+                    FontSize="15"
+                    Click="Button_Click_1">Xóa Người dùng</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBox x:Name="idtbx"
+                     FontSize="15"
+                     IsEnabled="False"></TextBox>
+            <TextBox x:Name="usernametbx"
+                     FontSize="15"
+                     IsEnabled="False"></TextBox>
+            <TextBox x:Name="admintbx"
+                     FontSize="15"></TextBox>
+            <TextBox x:Name="donvicongtactbx"
+                     FontSize="15"></TextBox>
+            <Button Grid.ColumnSpan="2"
+                    Click="Button_Click"
+                    FontSize="15">Cập nhật thông tin</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

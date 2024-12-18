@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -101,7 +102,26 @@ namespace Benfinit_water.View
             LastName_tb.Text = myuser.LastName.ToString();
         }
 
-        
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có muốn xóa tài khoản này?",
+                                     "Xác nhận",
+                                     MessageBoxButton.YesNo,
+                                     MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                // Nếu người dùng chọn Yes
+                if (_userprovider.ff_sql(null, null, null, null, null, null, null, 2, 2, 2, -1, ID, ID, false)) MessageBox.Show("Xóa người dùng thành công");
+
+            }
+            else
+            {
+                // Nếu người dùng chọn No
+                MessageBox.Show("Đã hủy thao tác cập nhật.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
+        }
     }
 
 }
