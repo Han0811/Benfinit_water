@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Benfinit_water.Controller;
 using Benfinit_water.Model;
 
 namespace Benfinit_water.View
@@ -24,6 +25,10 @@ namespace Benfinit_water.View
         public _CoSoModel myCoSo;
         public int _id;
         public int idnontaget;
+        private List<usermodel> users= _userprovider.GetUsers();
+        private usermodel myuser;
+        
+        
 
         public win_CapNhatCoSo(int __id, int _idnontaget)
         {
@@ -31,7 +36,7 @@ namespace Benfinit_water.View
             idnontaget = _idnontaget;
             _id = __id;
             myCoSo = _CoSoProvider.FindCoSoFirstById(CoSo, _id);
-
+            myuser = _thong_tin_user.GetUserById(idnontaget, users);
             // Gán giá trị cho các TextBox từ đối tượng myCoSo
             idtbx.Text = _id.ToString();
             nametbx.Text = myCoSo.name;
@@ -41,6 +46,17 @@ namespace Benfinit_water.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (!myuser.IsAdmin)
+            {
+                MessageBox.Show("Bạn không có quyền chỉnh sửa");
+                CoSo = _CoSoProvider.getCoSo();
+                myCoSo = _CoSoProvider.FindCoSoFirstById(CoSo, _id);
+                idtbx.Text = _id.ToString();
+                nametbx.Text = myCoSo.name;
+                muc_do_hanh_chinh_idtbx.Text = myCoSo.muc_do_hanh_chinh_id.ToString();
+                truc_thuoctbx.Text = myCoSo.truc_thuoc.ToString();
+                return;
+            }
             string tempname = null;
             int? tempmuc_do_hanh_chinh_id = null; // Nullable int
             int? temptruc_thuoc = null; // Nullable int
@@ -73,5 +89,25 @@ namespace Benfinit_water.View
             truc_thuoctbx.Text = myCoSo.truc_thuoc.ToString();
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có muốn xóa cơ sở này?",
+                                     "Xác nhận",
+                                     MessageBoxButton.YesNo,
+                                     MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                // Nếu người dùng chọn Yes
+                if (_CoSoProvider.f_coso(-1, idnontaget, _id, null, null, null)) MessageBox.Show("Xóa cơ sở thành công");
+                
+            }
+            else
+            {
+                // Nếu người dùng chọn No
+                MessageBox.Show("Đã hủy thao tác cập nhật.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
+        }
     }
 }

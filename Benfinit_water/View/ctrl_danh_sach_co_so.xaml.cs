@@ -44,6 +44,12 @@ namespace Benfinit_water.View
                 mywin.Show();
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            win_themCoSo mywin = new win_themCoSo(id);
+            mywin.Show();
+        }
     }
   
 }
