@@ -133,6 +133,7 @@ namespace Benfinit_water.Model
             // Sử dụng LINQ để chọn trường 'name' từ danh sách
             return coSoModels.Select(model => model.name).ToList();
         }
+        
         public static List<_CoSoModel> SearchByNameCoSo(List<_CoSoModel> coSoModels, string searchTerm)
         {
             // Kiểm tra nếu danh sách đầu vào null hoặc chuỗi tìm kiếm là null/rỗng
@@ -144,6 +145,19 @@ namespace Benfinit_water.Model
             // Sử dụng LINQ để lọc danh sách dựa trên chuỗi tìm kiếm (không phân biệt hoa thường)
             return coSoModels
                    .Where(model => model.name != null && model.name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                   .ToList();
+        }
+        public static List<_CoSoModel> SearchByCapCoSo(List<_CoSoModel> coSoModels, int target)
+        {
+            // Kiểm tra nếu danh sách đầu vào null
+            if (coSoModels == null)
+            {
+                return new List<_CoSoModel>(); // Trả về danh sách rỗng
+            }
+
+            // Lọc danh sách dựa trên `muc_do_hanh_chinh_id` khớp với `target`
+            return coSoModels
+                   .Where(model =>  model.muc_do_hanh_chinh_id == target)
                    .ToList();
         }
 

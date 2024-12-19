@@ -857,6 +857,29 @@ namespace Benfinit_water.View
 
 
         }
+        private void bao_cao_enter(object sender, MouseEventArgs e)
+        {
+            enter("bao_cao_den", "bao_cao_trang");
+
+        }
+
+        private void bao_caon_leave(object sender, MouseEventArgs e)
+        {
+            if (true)
+            {
+                leave("bao_cao_den", "bao_cao_trang");
+
+            }
+        }
+        private void bao_cao_down(object sender, MouseButtonEventArgs e)
+        {
+
+            noi_dung.Content = new ctrl_baocao();
+        }
+
+
+
+
         private void thong_tin_enter(object sender, MouseEventArgs e)
         {
             enter("thong_tin_den", "thong_tin_trang");
@@ -870,6 +893,11 @@ namespace Benfinit_water.View
                 leave("thong_tin_den", "thong_tin_trang");
 
             }
+        }
+        private void thong_tin_down(object sender, MouseButtonEventArgs e)
+        {
+
+            noi_dung.Content = new ctrl_thong_tin_user(id);
         }
         private void lich_su_down(object sender, MouseButtonEventArgs e)
         {
@@ -892,11 +920,7 @@ namespace Benfinit_water.View
 
 
         }
-        private void thong_tin_down(object sender, MouseButtonEventArgs e)
-        {
 
-            noi_dung.Content = new ctrl_thong_tin_user(id);
-        }
 
         private void admin_enter(object sender, MouseEventArgs e)
         {
@@ -918,7 +942,7 @@ namespace Benfinit_water.View
         {
 
             if (myuser.IsAdmin)
-                noi_dung.Content = new ctrl_supersu(id,noi_dung);
+                noi_dung.Content = new ctrl_supersu(id, noi_dung);
             else MessageBox.Show("Bạn không có quyền truy cập");
         }
 
@@ -974,51 +998,142 @@ namespace Benfinit_water.View
 
         private void btn_seach_down(object sender, MouseButtonEventArgs e)
         {
-            List<string> temp = _TimKiem.SearchData(newtimkiem._data, SearchBox.Text);
+            List<string> temp = new List<string>
+{
+                "Quản lý danh mục đơn vị hành chính cấp huyện",
+                "Tìm kiếm đơn vị hành chính cấp huyện",
+                "Quản lý danh mục đơn vị hành chính cấp xã",
+                "Tìm kiếm danh mục đơn vị hành chính cấp xã",
+                "Quản lý người dùng",
+                "Tìm kiếm người dùng",
+                "Quản lý trạng thái người dùng",
+                "Quản lý Định nghĩa quyền",
+                "Quản lý nhóm người dùng",
+                "Quản trị trạng thái nhóm người dùng",
+                "Tra cứu nhóm người dùng",
+                "Phân quyền cho nhóm người dùng",
+                "Tra cứu phân quyền cho nhóm người dùng",
+                "Phân quyền cho người dùng",
+                "Tra cứu phân quyền cho người dùng",
+                "Quản lý Menu",
+                "Quản lý lịch sử truy cập người dùng",
+                "Tra cứu lịch sử truy cập người dùng",
+                "Quản lý lịch sử tác động hệ thống",
+                "Tra cứu lịch sử tác động hệ thống",
+                "Báo cáo - thống kê người dùng",
+                "Báo cáo - thống kê lịch sử truy cập người dùng",
+                "Báo cáo - thống kê lịch sử tác động hệ thống",
+                "Báo cáo - thống kê tổng hợp",
+                "Đăng nhập hệ thống",
+                "Quên mật khẩu",
+                "Quản lý thông tin tài khoản",
+                "Đổi mật khẩu",
+                "Đăng xuất khỏi hệ thống"
+            };
             if (temp.First() is null) ;
             else
             {
-                switch (temp.First())
+                switch (SearchBox.Text)
                 {
-                    case "users":
-
+                    case "Quản lý danh mục đơn vị hành chính cấp huyện":
+                        noi_dung.Content = new ctrl_danh_sach_co_so(id, noi_dung);
                         break;
-
-                    case "trambom":
-                        noi_dung.Content = new ctrl_TramBom();
+                    case "Tìm kiếm đơn vị hành chính cấp huyện":
+                        noi_dung.Content = new ctrl_danh_sach_co_so(id, noi_dung);
                         break;
-                    case "quyhoach":
-                        noi_dung.Content = new ctrl_quy_hoach();
+                    case "Quản lý danh mục đơn vị hành chính cấp xã":
+                        noi_dung.Content = new ctrl_danh_sach_co_so(id, noi_dung);
                         break;
-                    case "muc_do_hanh_chinh":
-
+                    case "Tìm kiếm danh mục đơn vị hành chính cấp xã":
+                        noi_dung.Content = new ctrl_danh_sach_co_so(id, noi_dung);
                         break;
-                    case "duongong":
-                        noi_dung.Content = new ctrl_DuongOng();
+                    case "Quản lý người dùng":
+                        noi_dung.Content= new ctrl_supersu(id , noi_dung);
                         break;
-
-                    case "daptran":
-                        noi_dung.Content = new ctrl_DapTran();
+                    case "Tìm kiếm người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
                         break;
-                    case "danhsachlichsutruycap":
+                    case "Quản lý trạng thái người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Quản lý Định nghĩa quyền":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Quản lý nhóm người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Quản trị trạng thái nhóm người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Tra cứu nhóm người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Phân quyền cho nhóm người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Tra cứu phân quyền cho nhóm người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Phân quyền cho người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Tra cứu phân quyền cho người dùng":
+                        noi_dung.Content = new ctrl_supersu(id, noi_dung);
+                        break;
+                    case "Quản lý Menu":
+                        btn_nguoi_dung = true;
+                        menu_nguoi_dung_trang.Visibility = Visibility.Visible;
+                        break;
+                    case "Quản lý lịch sử truy cập người dùng":
+                        noi_dung.Content =new ctrl_lich_su_tac_dong_he_thong(id);
+                        break;
+                    case "Tra cứu lịch sử truy cập người dùng":
                         noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
                         break;
-                    case "danh_sach_co_so":
-
-                        break;
-                    case "congtrinhthuyloi":
-                        noi_dung.Content = new ctrl_CongTrinh();
-                        break;
-                    case "co_so":
-
-                        break;
-
-                    case "access_history":
+                    case "Quản lý lịch sử tác động hệ thống":
                         noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
                         break;
+                    case "Tra cứu lịch sử tác động hệ thống":
+                        noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
+                        break;
+                    case "Báo cáo - thống kê người dùng":
+                        noi_dung.Content = new ctrl_baocao();
+                        break;
+                    case "Báo cáo - thống kê lịch sử truy cập người dùng":
+                        noi_dung.Content = new ctrl_baocao();
+                        break;
+                    case "Báo cáo - thống kê lịch sử tác động hệ thống":
+                        noi_dung.Content = new ctrl_baocao();
+                        break;
+                    case "Báo cáo - thống kê tổng hợp":
+                        noi_dung.Content = new ctrl_baocao();
+                        break;
+                    case "Đăng nhập hệ thống":
+                        win_dang_nhap mywin = new win_dang_nhap();
+                        mywin.Show();
+                        this.Close();
+                        break;
+                    case "Quên mật khẩu":
+                        win_dang_nhap mywin1 = new win_dang_nhap();
+                        mywin1.Show();
+                        this.Close();
+                        break;
+                    case "Quản lý thông tin tài khoản":
+                        noi_dung.Content = new ctrl_thong_tin_user(id);
+                        break;
+                    case "Đổi mật khẩu":
+                        win_dang_nhap mywin2 = new win_dang_nhap();
+                        mywin2.Show();
+                        this.Close();
+                        break;
+                    case "Đăng xuất khỏi hệ thống":
+                        win_dang_nhap mywin3 = new win_dang_nhap();
 
+                        this.Close();
+                        mywin3.Show();
+                        break;
                     default:
-
+                        Console.WriteLine("Không có mục này trong danh sách.");
                         break;
                 }
             }

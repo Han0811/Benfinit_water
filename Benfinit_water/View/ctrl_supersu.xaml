@@ -119,7 +119,39 @@
 
 
         </Grid>
-        <Button Click="Button_Click">Theo nhóm</Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Menu Width="auto">
+                    <MenuItem Header="Trạng thái người dùng">
+                        <MenuItem Header="Hoạt động"
+                                  Click="active_Click" />
+                        <MenuItem Header="Không hoạt động"
+                                  Click="nonactive_Click" />
+                    </MenuItem>
+                </Menu>
+                <Menu Width="auto" Grid.Column="1">
+                    <MenuItem Header="Phân quyền của người dùng">
+                        <MenuItem Header="Có quyền quản trị"
+                                  Click="yes_Click" />
+                        <MenuItem Header="Không quyền quản trị"
+                                  Click="no_Click" />
+                    </MenuItem>
+                </Menu>
+
+            </Grid>
+
+            <Button Click="Button_Click"
+                    Grid.Column="1">Phân quyền theo nhóm</Button>
+        </Grid>
+        
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
             <ListView x:Name="listBoxCoSo"
@@ -134,12 +166,14 @@
                                         DisplayMemberBinding="{Binding UserName}"
                                         Width="auto" />
                         <GridViewColumn Header="Admin"
-                                        DisplayMemberBinding="{Binding IsAdmin}"
+                                        DisplayMemberBinding="{Binding v_IsAdmin}"
                                         Width="auto" />
                         <GridViewColumn Header="Đơn vị công tác"
-                                        DisplayMemberBinding="{Binding DonViCongTac}"
+                                        DisplayMemberBinding="{Binding v_DonViCongTac}"
                                         Width="auto" />
-
+                        <GridViewColumn Header="Trạng thái hoạt động"
+                                        DisplayMemberBinding="{Binding v_IsActive}"
+                                        Width="auto" />
                     </GridView>
                 </ListView.View>
             </ListView>

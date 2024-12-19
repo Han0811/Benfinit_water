@@ -8,7 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     
         <StackPanel>
-            <Grid HorizontalAlignment="Center"
+        
+        <Grid HorizontalAlignment="Center"
                   VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -119,8 +120,32 @@
 
 
             </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                
+            </Grid.ColumnDefinitions>
+            <Menu VerticalAlignment="Stretch"
+                  HorizontalAlignment="Left">
+                <MenuItem Header="Tìm kiếm danh mục hành chính">
+                    <MenuItem Header="Huyện"
+                              Click="Huyen_Click" />
+                    <MenuItem Header="Thành phố"
+                              Click="Huyen_Click" />
+                    <MenuItem Header="Xã"
+                              Click="Xa_Click" />
+                    <MenuItem Header="Phường"
+                              Click="Phuong_Click" />
+                    <MenuItem Header="Thị trấn"
+                              Click="ThiTran_Click" />
+                </MenuItem>
+            </Menu>
             <Button Click="Button_Click"
-                    Height="30">Thêm mới</Button>
+                    Height="30"
+                    Grid.Column="1">Thêm mới</Button>
+        </Grid>
+            
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
             <ListView x:Name="listBoxCoSo"

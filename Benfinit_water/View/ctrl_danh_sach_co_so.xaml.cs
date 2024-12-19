@@ -38,7 +38,34 @@ namespace Benfinit_water.View
             myuser = _thong_tin_user.GetUserById(id, users);
             listBoxCoSo.ItemsSource = newCoSo;
         }
-       
+        private void Huyen_Click(object sender, RoutedEventArgs e)
+        {
+            List<_CoSoModel> temp = _CoSoProvider.SearchByCapCoSo(newCoSo, 2);
+            listBoxCoSo.ItemsSource = temp;
+        }
+
+        private void Tp_Click(object sender, RoutedEventArgs e)
+        {
+            List<_CoSoModel> temp = _CoSoProvider.SearchByCapCoSo(newCoSo, 3);
+            listBoxCoSo.ItemsSource = temp;
+        }
+        private void Xa_Click(object sender, RoutedEventArgs e)
+        {
+            List<_CoSoModel> temp = _CoSoProvider.SearchByCapCoSo(newCoSo, 4);
+            listBoxCoSo.ItemsSource = temp;
+
+        }
+        private void Phuong_Click(object sender, RoutedEventArgs e)
+        {
+            List<_CoSoModel> temp = _CoSoProvider.SearchByCapCoSo(newCoSo, 5);
+            listBoxCoSo.ItemsSource = temp;
+        }
+        private void ThiTran_Click(object sender, RoutedEventArgs e)
+        {
+            List<_CoSoModel> temp = _CoSoProvider.SearchByCapCoSo(newCoSo, 6);
+            listBoxCoSo.ItemsSource = temp;
+        }
+        
         private void ListBoxCoSo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // Lấy mục đã chọn từ ListBox

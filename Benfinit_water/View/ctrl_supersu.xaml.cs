@@ -48,7 +48,7 @@ namespace Benfinit_water.View
             if (selectedItem != null)
             {
                 
-                win_CapNhatSuperSU mywin = new win_CapNhatSuperSU(id, selectedItem.Id); // Pass user ID
+                win_CapNhatSuperSU mywin = new win_CapNhatSuperSU(id, selectedItem.Id,noi_dung); // Pass user ID
                 mywin.Show();
                 listBoxCoSo.ItemsSource = users;
                 users = _userprovider.GetUsers();
@@ -348,6 +348,28 @@ namespace Benfinit_water.View
             var brush = new SolidColorBrush(Color.FromArgb(0xFF, 0xB4, 0xB4, 0xB4)); // Giá trị khởi tạo
             brush.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation);
             button1.BorderBrush = brush;
+        }
+        private void active_Click(object sender, RoutedEventArgs e)
+        {
+            List<usermodel> temp =  _userprovider.SearchByTrangThaiuser(users, true);
+            listBoxCoSo.ItemsSource = temp;
+        }
+
+        private void nonactive_Click(object sender, RoutedEventArgs e)
+        {
+            List<usermodel> temp = _userprovider.SearchByTrangThaiuser(users, false);
+            listBoxCoSo.ItemsSource = temp;
+        }
+        private void yes_Click(object sender, RoutedEventArgs e)
+        {
+            List<usermodel> temp = _userprovider.SearchByIsAdminuser(users, true);
+            listBoxCoSo.ItemsSource = temp;
+        }
+
+        private void no_Click(object sender, RoutedEventArgs e)
+        {
+            List<usermodel> temp = _userprovider.SearchByIsAdminuser(users, false);
+            listBoxCoSo.ItemsSource = temp;
         }
     }
 }

@@ -640,8 +640,34 @@
                                     </Border>
 
                                 </Border>
-                                
-                                    <Border x:Name="lich_su_trang"
+                                <Border x:Name="bao_cao_trang"
+                                        Margin="10"
+                                        BorderBrush="#aeaeae"
+                                        BorderThickness="1"
+                                        CornerRadius="25"
+                                        Height="50"
+                                        Width="200"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Grid.Column="1">
+                                    <Border x:Name="bao_cao_den"
+                                            BorderBrush="#aeaeae"
+                                            CornerRadius="25"
+                                            Height="50"
+                                            Width="200"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Grid.Column="1"
+                                            MouseLeftButtonDown="bao_cao_down">
+                                        <TextBlock Text="Báo cáo"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="20"></TextBlock>
+                                    </Border>
+
+                                </Border>
+
+                                <Border x:Name="lich_su_trang"
                                             Margin="10"
                                             BorderBrush="#aeaeae"
                                             BorderThickness="1"

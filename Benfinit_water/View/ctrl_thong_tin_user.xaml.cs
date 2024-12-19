@@ -43,10 +43,10 @@ namespace Benfinit_water.View
             // Tìm kiếm người dùng với ID từ danh sách
             myuser = _thong_tin_user.GetUserById(ID, users);
             Id_tb.Text = myuser.Id.ToString();
-            IsAdmin_tb.Text = myuser.IsAdmin.ToString();
+            IsAdmin_tb.Text = myuser.v_IsAdmin.ToString();
             UserName_tb.Text = myuser.UserName.ToString();
-            IsActive_tb.Text = myuser.IsActive.ToString();
-            DonViCongTac_tb.Text = myuser.DonViCongTac.ToString();
+            IsActive_tb.Text = myuser.v_IsActive.ToString();
+            DonViCongTac_tb.Text = myuser.v_DonViCongTac.ToString();
             Address_tb.Text = myuser.Address.ToString();
             Email_tb.Text = myuser.Email.ToString();
             Phone_tb.Text = myuser.Phone.ToString();
@@ -54,6 +54,7 @@ namespace Benfinit_water.View
             DateJoined_tb.Text = myuser.DateJoined.ToString();
             FirstName_tb.Text = myuser.FirstName.ToString();
             LastName_tb.Text = myuser.LastName.ToString();
+            FullName_tb.Text = myuser.full_name.ToString();
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -88,11 +89,10 @@ namespace Benfinit_water.View
             // Tìm kiếm người dùng với ID từ danh sách
             myuser = _thong_tin_user.GetUserById(ID, users);
             Id_tb.Text = myuser.Id.ToString();
-            IsAdmin_tb.Text = myuser.IsAdmin.ToString();
+            IsAdmin_tb.Text = myuser.v_IsAdmin.ToString();
             UserName_tb.Text = myuser.UserName.ToString();
-            IsActive_tb.Text = myuser.IsActive.ToString();
-
-            DonViCongTac_tb.Text = myuser.DonViCongTac.ToString();
+            IsActive_tb.Text = myuser.v_IsActive.ToString();
+            DonViCongTac_tb.Text = myuser.v_DonViCongTac.ToString();
             Address_tb.Text = myuser.Address.ToString();
             Email_tb.Text = myuser.Email.ToString();
             Phone_tb.Text = myuser.Phone.ToString();
@@ -100,6 +100,7 @@ namespace Benfinit_water.View
             DateJoined_tb.Text = myuser.DateJoined.ToString();
             FirstName_tb.Text = myuser.FirstName.ToString();
             LastName_tb.Text = myuser.LastName.ToString();
+            FullName_tb.Text = myuser.full_name.ToString();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

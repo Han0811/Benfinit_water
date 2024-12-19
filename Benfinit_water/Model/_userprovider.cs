@@ -171,6 +171,34 @@ namespace Benfinit_water.Model
                    .ToList();
         }
 
+        public static List<usermodel> SearchByTrangThaiuser(List<usermodel> coSoModels, bool target)
+        {
+            // Kiểm tra nếu danh sách đầu vào null
+            if (coSoModels == null)
+            {
+                return new List<usermodel>(); // Trả về danh sách rỗng
+            }
+
+            // Lọc danh sách dựa trên giá trị của `IsActive`
+            return coSoModels
+                   .Where(model => model.IsActive == target)
+                   .ToList();
+        }
+        public static List<usermodel> SearchByIsAdminuser(List<usermodel> coSoModels, bool target)
+        {
+            // Kiểm tra nếu danh sách đầu vào null
+            if (coSoModels == null)
+            {
+                return new List<usermodel>(); // Trả về danh sách rỗng
+            }
+
+            // Lọc danh sách dựa trên giá trị của `IsActive`
+            return coSoModels
+                   .Where(model => model.IsAdmin == target)
+                   .ToList();
+        }
+
+
     }
 
 }

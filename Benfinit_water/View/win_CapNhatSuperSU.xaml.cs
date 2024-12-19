@@ -25,12 +25,14 @@ namespace Benfinit_water.View
         public int idtarget;
         private List<usermodel> users = _userprovider.GetUsers();
         private usermodel myuser;
+        public ContentControl noi_dung;
         
-        public win_CapNhatSuperSU(int _id,int _idtarget)
+        public win_CapNhatSuperSU(int _id,int _idtarget,ContentControl _noi_dung)
         {
             InitializeComponent();
             id = _id;
             idtarget = _idtarget;
+            noi_dung = _noi_dung;
             users = _userprovider.GetUsers();
             
             myuser = _thong_tin_user.GetUserById(_idtarget, users);
@@ -47,7 +49,7 @@ namespace Benfinit_water.View
             int tempIsAdmin = 2;
             bool trangthaihoatdong = false;
             int tempdonvicongtac = int.Parse(donvicongtactbx.Text);
-
+            
             if (!_thong_tin_user.ischange(admintbx.Text, myuser.IsAdmin.ToString()))
             tempIsAdmin = bool.Parse(admintbx.Text)?1:0;
             if (!_thong_tin_user.ischange(donvicongtactbx.Text , myuser.DonViCongTac.ToString()))
@@ -72,7 +74,9 @@ namespace Benfinit_water.View
                 idtarget ,     // ID mục tiêu
                 trangthaihoatdong       // Trạng thái hoạt động
             );
+            users = _userprovider.GetUsers();
 
+            myuser = _thong_tin_user.GetUserById(idtarget, users);
             // Thông báo kết quả
             if (isUpdated)
             {
@@ -80,7 +84,7 @@ namespace Benfinit_water.View
                 users = _userprovider.GetUsers();
                 // Cập nhật lại thông tin từ nguồn
                 myuser = _thong_tin_user.GetUserById(idtarget, users);
-
+                noi_dung.Content = new ctrl_supersu(id, noi_dung);
                 // Cập nhật lại các TextBox
                 idtbx.Text = myuser.Id.ToString();
                 usernametbx.Text = myuser.UserName;
@@ -122,8 +126,10 @@ namespace Benfinit_water.View
                 id,            // ID người dùng
                 idtarget,      // ID mục tiêu
                 true           // Trạng thái hoạt động
-            )) MessageBox.Show("Xóa cơ sở thành công");
-
+            )) MessageBox.Show("Xóa người dùng thành công");
+            this.Close();
+                myuser = _thong_tin_user.GetUserById(idtarget, users);
+                noi_dung.Content = new ctrl_supersu(id, noi_dung);
             }
             else
             {

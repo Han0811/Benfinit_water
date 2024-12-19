@@ -139,20 +139,18 @@
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="187*"></ColumnDefinition>
-                    <ColumnDefinition Width="79*" />
-                    <ColumnDefinition Width="82*"></ColumnDefinition>
-                    <ColumnDefinition Width="185*" />
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="15"
                            x:Name="FirstName_tbl"
                            Grid.ColumnSpan="3"
-                           Margin="0,0,81,0">Họ</TextBlock>
+                           >Họ</TextBlock>
                 <TextBox FontSize="15"
                          x:Name="FirstName_tb"
                          Grid.Column="1"
                          Grid.ColumnSpan="3"
-                         Margin="79,0,0,0"></TextBox>
+                         ></TextBox>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -164,6 +162,22 @@
                 <TextBox FontSize="15"
                          x:Name="LastName_tb"
                          Grid.Column="1"></TextBox>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="267*"></ColumnDefinition>
+                    <ColumnDefinition Width="91*"></ColumnDefinition>
+                    <ColumnDefinition Width="175*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="15"
+                           x:Name="FullName_tbl"
+                           Grid.ColumnSpan="2"
+                           Margin="0,0,91,0">Tên dầy đủ</TextBlock>
+                <TextBox FontSize="15"
+                         IsReadOnly="True"
+                         x:Name="FullName_tb"
+                         Grid.Column="1"
+                         Grid.ColumnSpan="2"></TextBox>
             </Grid>
             <Button Click="Button_Click">Cập nhật thông tin</Button>
             <Button Click="Button_Click_1">Xóa tài khoản</Button>
