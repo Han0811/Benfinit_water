@@ -93,7 +93,12 @@ Click="btnAdd_Click" Style="{StaticResource RoundedButtonWithShadow}" RenderTran
         <Grid>
             <!-- DataGrid -->
             <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" Margin="0,0,0,132"
-                  IsReadOnly="True" RowDetailsVisibilityMode="Collapsed" LoadingRow="dataGrid_LoadingRow">
+                  IsReadOnly="True" RowDetailsVisibilityMode="Collapsed" LoadingRow="dataGrid_LoadingRow"
+                                  VerticalScrollBarVisibility="Visible"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  ScrollViewer.CanContentScroll="True"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  MaxHeight="585">
                 <DataGrid.Columns>
                     <!-- Các cột dữ liệu -->
                     <DataGridTemplateColumn Header="STT" Width="40">
