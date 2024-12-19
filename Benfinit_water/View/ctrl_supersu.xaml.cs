@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -17,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Benfinit_water.Controller;
 using Benfinit_water.Model;
+using System.Globalization;
 
 namespace Benfinit_water.View
 {
@@ -109,11 +111,15 @@ namespace Benfinit_water.View
                 return;
             }
 
+            // Loại bỏ dấu tiếng Việt trong input
+            string inputWithoutTones = RemoveVietnameseTone(input);
+
             // Tìm kiếm gợi ý trong danh sách các chuỗi
             var suggestions = items
-                .Where(item => item.ToLower().Contains(input))  // So sánh chuỗi không phân biệt hoa thường
+                .Where(item => RemoveVietnameseTone(item.ToLower()).Contains(inputWithoutTones))  // So sánh chuỗi không phân biệt dấu
                 .ToList();
 
+            // Nếu có kết quả tìm kiếm
             if (suggestions.Any())
             {
                 SuggestionList.ItemsSource = suggestions;
@@ -121,9 +127,32 @@ namespace Benfinit_water.View
             }
             else
             {
-                SuggestionList.Visibility = Visibility.Collapsed;
                 SuggestionList.ItemsSource = null;
+                SuggestionList.Visibility = Visibility.Collapsed;
             }
+        }
+
+        // Hàm loại bỏ dấu tiếng Việt và các dấu khác
+        private string RemoveVietnameseTone(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return input;
+
+            // Chuyển đổi thành dạng chuẩn (dấu được phân tách khỏi các ký tự)
+            input = input.Normalize(NormalizationForm.FormD);
+
+            // Loại bỏ các ký tự dấu
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (char c in input)
+            {
+                // Kiểm tra nếu ký tự là một ký tự có dấu
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            // Chuyển đổi lại thành dạng chuẩn không dấu
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
 
 

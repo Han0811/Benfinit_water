@@ -12,6 +12,7 @@ namespace Benfinit_water.Model
         public string data { get; set; }
         public int id { get; set; }
         public string action_type { get; set; }
+        public string user_name { get; set; }
         public DateTime access_time { get; set; }
     }
     

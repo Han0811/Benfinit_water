@@ -52,6 +52,7 @@ namespace Benfinit_water.Model
                                     data = reader.GetString("data"),
                                     id = reader.GetInt32("id"),
                                     action_type = reader.GetString("action_type"),
+                                    user_name = reader.GetString("user_name"),
                                     access_time = reader.GetDateTime("access_time")
                                 };
 
@@ -69,6 +70,31 @@ namespace Benfinit_water.Model
             }
 
             return data;
+        }
+        public static List<string> GetNamesFromUserName(List<usermodel> coSoModels)
+        {
+            // Kiểm tra nếu danh sách đầu vào null hoặc rỗng
+            if (coSoModels == null || !coSoModels.Any())
+            {
+                return new List<string>(); // Trả về danh sách rỗng
+            }
+
+            // Sử dụng LINQ để chọn trường 'name' từ danh sách
+            return coSoModels.Select(model => model.UserName).ToList();
+        }
+
+        public static List<_danhsachlichsutruycap> SearchByUserName(List<_danhsachlichsutruycap> coSoModels, string searchTerm)
+        {
+            // Kiểm tra nếu danh sách đầu vào null hoặc chuỗi tìm kiếm là null/rỗng
+            if (coSoModels == null || string.IsNullOrEmpty(searchTerm))
+            {
+                return new List<_danhsachlichsutruycap>(); // Trả về danh sách rỗng
+            }
+
+            // Sử dụng LINQ để lọc danh sách dựa trên chuỗi tìm kiếm (không phân biệt hoa thường)
+            return coSoModels
+                   .Where(model => model.user_name != null && model.user_name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                   .ToList();
         }
 
     }

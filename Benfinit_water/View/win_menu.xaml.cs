@@ -16,6 +16,7 @@ using System.Windows.Media.Effects;
 using Benfinit_water.Model;
 using Org.BouncyCastle.Tls;
 using Benfinit_water.Controller;
+using System.Globalization;
 
 namespace Benfinit_water.View
 {
@@ -39,6 +40,7 @@ namespace Benfinit_water.View
             users = _userprovider.GetUsers();
             // Tìm kiếm người dùng với ID từ danh sách
             myuser = _thong_tin_user.GetUserById(id, users);
+            noi_dung.Content = new ctrl_chao_mung();
 
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -972,33 +974,7 @@ namespace Benfinit_water.View
 
         }
 
-        private readonly List<string> items = newtimkiem._string;
-
-
-        private void btn_seach_enter(object sender, MouseEventArgs e)
-        {
-            enter("btn_seach_den", "btn_seach_trang");
-            doi_anh("btn_seach_png", "png/seach_2.png");
-        }
-
-        private void btn_seach_leave(object sender, MouseEventArgs e)
-        {
-            if (true)
-            {
-                leave("btn_seach_den", "btn_seach_trang");
-                doi_anh("btn_seach_png", "png/seach_1.png");
-            }
-            else
-            {
-                leave("btn_seach_den", "btn_seach_trang");
-                doi_anh("btn_seach_png", "png/seach_1.png");
-            }
-
-        }
-
-        private void btn_seach_down(object sender, MouseButtonEventArgs e)
-        {
-            List<string> temp = new List<string>
+        private readonly  List<string> items = new List<string>
 {
                 "Quản lý danh mục đơn vị hành chính cấp huyện",
                 "Tìm kiếm đơn vị hành chính cấp huyện",
@@ -1030,7 +1006,32 @@ namespace Benfinit_water.View
                 "Đổi mật khẩu",
                 "Đăng xuất khỏi hệ thống"
             };
-            if (temp.First() is null) ;
+
+
+    private void btn_seach_enter(object sender, MouseEventArgs e)
+        {
+            enter("btn_seach_den", "btn_seach_trang");
+            doi_anh("btn_seach_png", "png/seach_2.png");
+        }
+
+        private void btn_seach_leave(object sender, MouseEventArgs e)
+        {
+            if (true)
+            {
+                leave("btn_seach_den", "btn_seach_trang");
+                doi_anh("btn_seach_png", "png/seach_1.png");
+            }
+            else
+            {
+                leave("btn_seach_den", "btn_seach_trang");
+                doi_anh("btn_seach_png", "png/seach_1.png");
+            }
+
+        }
+
+        private void btn_seach_down(object sender, MouseButtonEventArgs e)
+        {
+                        if (SearchBox.Text is null) ;
             else
             {
                 switch (SearchBox.Text)
@@ -1154,11 +1155,15 @@ namespace Benfinit_water.View
                 return;
             }
 
+            // Loại bỏ dấu tiếng Việt trong input
+            string inputWithoutTones = RemoveVietnameseTone(input);
+
             // Tìm kiếm gợi ý trong danh sách các chuỗi
             var suggestions = items
-                .Where(item => item.ToLower().Contains(input))  // So sánh chuỗi không phân biệt hoa thường
+                .Where(item => RemoveVietnameseTone(item.ToLower()).Contains(inputWithoutTones))  // So sánh chuỗi không phân biệt dấu
                 .ToList();
 
+            // Nếu có kết quả tìm kiếm
             if (suggestions.Any())
             {
                 SuggestionList.ItemsSource = suggestions;
@@ -1166,9 +1171,32 @@ namespace Benfinit_water.View
             }
             else
             {
-                SuggestionList.Visibility = Visibility.Collapsed;
                 SuggestionList.ItemsSource = null;
+                SuggestionList.Visibility = Visibility.Collapsed;
             }
+        }
+
+        // Hàm loại bỏ dấu tiếng Việt và các dấu khác
+        private string RemoveVietnameseTone(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return input;
+
+            // Chuyển đổi thành dạng chuẩn (dấu được phân tách khỏi các ký tự)
+            input = input.Normalize(NormalizationForm.FormD);
+
+            // Loại bỏ các ký tự dấu
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (char c in input)
+            {
+                // Kiểm tra nếu ký tự là một ký tự có dấu
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+
+            // Chuyển đổi lại thành dạng chuẩn không dấu
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
 
         private void SuggestionList_SelectionChanged(object sender, SelectionChangedEventArgs e)

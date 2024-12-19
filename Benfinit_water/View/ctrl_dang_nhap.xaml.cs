@@ -161,10 +161,13 @@ namespace Benfinit_water.View
 
             List<usermodel> users = _userprovider.GetUsers();
 
-            // Kiểm tra xem số điện thoại đã tồn tại trong danh sách hay chưa
-
-            
-            if (username != "")
+            // Kiểm tra tên đăng nhập
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                ten_dang_nhap_tbl.Text = "Tên đăng nhập trống:";
+                ten_dang_nhap_tbl.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
             {
                 bool userExists = users.Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
                 if (!userExists)
@@ -176,18 +179,21 @@ namespace Benfinit_water.View
                 {
                     ten_dang_nhap_tbl.Text = "Tên đăng nhập:";
                     ten_dang_nhap_tbl.Foreground = new SolidColorBrush(Colors.Black);
-
                 }
+            }
+
+            // Kiểm tra mật khẩu
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                mat_khau_tbl.Text = "Mật khẩu trống:";
+                mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Red);
             }
             else
             {
-                mat_khau_tbl.Text = "Tên đăng nhập trống:";
-                mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Red);
-            }
-            if (password != "")
-            {
-                bool passExists = users.Any(u => u.Password.Equals(password, StringComparison.OrdinalIgnoreCase));
-                if (!passExists)
+                bool userExistsWithPassword = users
+                    .Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase) && u.Password.Equals(password, StringComparison.OrdinalIgnoreCase));
+
+                if (!userExistsWithPassword)
                 {
                     mat_khau_tbl.Text = "Mật khẩu không chính xác:";
                     mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Red);
@@ -196,33 +202,35 @@ namespace Benfinit_water.View
                 {
                     mat_khau_tbl.Text = "Mật khẩu nhập:";
                     mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Black);
-
                 }
             }
-            else
+
+            // Kiểm tra và thực hiện đăng nhập nếu cả tên đăng nhập và mật khẩu hợp lệ
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
-                ten_dang_nhap_tbl.Text = "Mật khẩu trống:";
-                ten_dang_nhap_tbl.Foreground = new SolidColorBrush(Colors.Red);
-            }
-            if ((username != "") && (password != ""))
-            {
-                bool passExists = users.Any(u => u.Password.Equals(password, StringComparison.OrdinalIgnoreCase));
-                bool userExists = users.Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
-                if (passExists && userExists) {
-                    
+                bool isValidUser = users
+                    .Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase) && u.Password.Equals(password, StringComparison.OrdinalIgnoreCase));
+
+                if (isValidUser)
+                {
                     var userId = users
-                    .Where(u => u.UserName == username)
-                    .Select(u => u.Id)
-                    .FirstOrDefault();
-                    
+                        .Where(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase) && u.Password.Equals(password, StringComparison.OrdinalIgnoreCase))
+                        .Select(u => u.Id)
+                        .FirstOrDefault();
+
                     win_menu mywin = new win_menu(userId);
                     _userprovider.ff_sql(null, null, null, null, null, null, null, 2, 1, 2, 0, userId, userId, false);
                     mywin.Show();
                     newscreen.Close();
                 }
+                else
+                {
+                    mat_khau_tbl.Text = "Tên đăng nhập hoặc mật khẩu không chính xác.";
+                    mat_khau_tbl.Foreground = new SolidColorBrush(Colors.Red);
+                }
             }
-
         }
+
 
 
 
