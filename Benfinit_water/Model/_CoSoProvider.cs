@@ -122,6 +122,31 @@ namespace Benfinit_water.Model
             
             return true;
         }
+        public static List<string> GetNamesFromCoSoModels(List<_CoSoModel> coSoModels)
+        {
+            // Kiểm tra nếu danh sách đầu vào null hoặc rỗng
+            if (coSoModels == null || !coSoModels.Any())
+            {
+                return new List<string>(); // Trả về danh sách rỗng
+            }
+
+            // Sử dụng LINQ để chọn trường 'name' từ danh sách
+            return coSoModels.Select(model => model.name).ToList();
+        }
+        public static List<_CoSoModel> SearchByNameCoSo(List<_CoSoModel> coSoModels, string searchTerm)
+        {
+            // Kiểm tra nếu danh sách đầu vào null hoặc chuỗi tìm kiếm là null/rỗng
+            if (coSoModels == null || string.IsNullOrEmpty(searchTerm))
+            {
+                return new List<_CoSoModel>(); // Trả về danh sách rỗng
+            }
+
+            // Sử dụng LINQ để lọc danh sách dựa trên chuỗi tìm kiếm (không phân biệt hoa thường)
+            return coSoModels
+                   .Where(model => model.name != null && model.name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                   .ToList();
+        }
+
 
     }
 

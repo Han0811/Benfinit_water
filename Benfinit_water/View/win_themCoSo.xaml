@@ -28,7 +28,7 @@
             <TextBox 
                      FontSize="15"
                      IsEnabled="False">Trực thuộc</TextBox>
-            
+            <Button Click="Button_Click_1">Phân quyền theo nhóm</Button>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <TextBox x:Name="idtbx"

@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Benfinit_water.Model
 {
-    internal class usermodel
+    public class usermodel
     {
         public int Id { get; set; }  // Định nghĩa ID, kiểu int, tự động tăng nếu là khóa chính trong cơ sở dữ liệu.
         public bool IsAdmin { get; set; }// Default là false.
+        public string v_IsAdmin { get; set; }
         public string UserName { get; set; }  // Tên người dùng.
         public bool IsActive { get; set; }// Default là false.
+        public string v_IsActive { get; set; }// Default là false.
         public int DonViCongTac { get; set; }  // Đơn vị công tác, mặc định là 0.
+        public string v_DonViCongTac { get; set; }  // Đơn vị công tác, mặc định là 0.
         public string Address { get; set; }  // Địa chỉ.
         public string Email { get; set; }  // Email.
         public string Phone { get; set; }  // Số điện thoại.
@@ -20,6 +23,7 @@ namespace Benfinit_water.Model
         public DateTime DateJoined { get; set; }  // Ngày tham gia, mặc định là thời gian hiện tại.
         public string FirstName { get; set; }  // Tên.
         public string LastName { get; set; }  // Họ.
+        public string full_name { get; set; }
     }
 
 }

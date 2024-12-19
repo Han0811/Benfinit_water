@@ -18,10 +18,10 @@ using System.Xml;
 
 namespace Benfinit_water.Model
 {
-    internal class _userprovider
+    public static class _userprovider
     {
         // Làm cho connectionString thành static
-        private static string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+        public static string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
         public static List<usermodel> GetUsers()
         {
@@ -36,7 +36,7 @@ namespace Benfinit_water.Model
                     conn.Open();
 
                     // Câu lệnh SQL để lấy dữ liệu từ bảng "users" và "thong_tin_user"
-                    string query = "select * from users";
+                    string query = "select * from v_users";
 
                     // Tạo câu lệnh MySqlCommand cho câu truy vấn JOIN
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -61,7 +61,11 @@ namespace Benfinit_water.Model
                                 Password = reader.GetString("password"),
                                 DateJoined = reader.GetDateTime("date_joined"),
                                 FirstName = reader.GetString("first_name"),
-                                LastName = reader.GetString("last_name")
+                                LastName = reader.GetString("last_name"),
+                                v_IsAdmin = reader.GetString("v_is_admin"),
+                                v_IsActive = reader.GetString("v_is_active"),
+                                v_DonViCongTac = reader.GetString("v_don_vi_cong_tac"),
+                                full_name = reader.GetString("full_name")
                             };
 
                             // Thêm vào danh sách người dùng
@@ -141,6 +145,30 @@ namespace Benfinit_water.Model
                 _dangki.ShowErrorMessage("Lỗi: " + ex.Message);
                 return false;
             }
+        }
+        public static List<string> GetNamesFromuserModels(List<usermodel> coSoModels)
+        {
+            // Kiểm tra nếu danh sách đầu vào null hoặc rỗng
+            if (coSoModels == null || !coSoModels.Any())
+            {
+                return new List<string>(); // Trả về danh sách rỗng
+            }
+
+            // Sử dụng LINQ để chọn trường 'name' từ danh sách
+            return coSoModels.Select(model => model.v_DonViCongTac).ToList();
+        }
+        public static List<usermodel> SearchByNameuser(List<usermodel> coSoModels, string searchTerm)
+        {
+            // Kiểm tra nếu danh sách đầu vào null hoặc chuỗi tìm kiếm là null/rỗng
+            if (coSoModels == null || string.IsNullOrEmpty(searchTerm))
+            {
+                return new List<usermodel>(); // Trả về danh sách rỗng
+            }
+
+            // Sử dụng LINQ để lọc danh sách dựa trên chuỗi tìm kiếm (không phân biệt hoa thường)
+            return coSoModels
+                   .Where(model => model.v_DonViCongTac != null && model.v_DonViCongTac.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                   .ToList();
         }
 
     }

@@ -25,13 +25,14 @@ namespace Benfinit_water.View
         public int idtarget;
         private List<usermodel> users = _userprovider.GetUsers();
         private usermodel myuser;
-
+        
         public win_CapNhatSuperSU(int _id,int _idtarget)
         {
             InitializeComponent();
             id = _id;
             idtarget = _idtarget;
-
+            users = _userprovider.GetUsers();
+            
             myuser = _thong_tin_user.GetUserById(_idtarget, users);
             // Gán giá trị cho các TextBox từ đối tượng myCoSo
             idtbx.Text = myuser.Id.ToString();

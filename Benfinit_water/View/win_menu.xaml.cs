@@ -24,15 +24,15 @@ namespace Benfinit_water.View
     /// </summary>
     public partial class win_menu : Window
     {
-        public static timkiem newtimkiem = _QuanLyMenuProvider.GetTimKiem(); 
+        public static timkiem newtimkiem = _QuanLyMenuProvider.GetTimKiem();
         public int id;
         private List<usermodel> users;
         private usermodel myuser;
         public win_menu(int _id)
         {
             InitializeComponent();
-            
-            
+
+
             id = _id;
             this.Closing += MainWindow_Closing;
             // Khởi tạo danh sách người dùng
@@ -48,7 +48,8 @@ namespace Benfinit_water.View
             if (result == MessageBoxResult.No)
             {
                 e.Cancel = true; // Ngăn không cho cửa sổ đóng
-            }else
+            }
+            else
             {
                 _userprovider.ff_sql(null, null, null, null, null, null, null, 2, 0, 2, 0, id, id, false);
             }
@@ -496,8 +497,8 @@ namespace Benfinit_water.View
 
         private void home_down(object sender, MouseButtonEventArgs e)
         {
-            
-            
+
+
             home = true;
             quy_hoach = false;
             dap_nuoc = false;
@@ -512,7 +513,7 @@ namespace Benfinit_water.View
             doi_anh("duong_ong_png", "png/duong_ong_1.png");
             doi_anh("ban_do_png", "png/ban_do_1.png");
             doi_anh("he_thong_png", "png/he_thong_1.png");
-            var myctrl = new ctrl_danh_sach_co_so(id);
+            var myctrl = new ctrl_danh_sach_co_so(id, noi_dung);
             noi_dung.Content = myctrl;
 
         }
@@ -520,7 +521,7 @@ namespace Benfinit_water.View
         {
             enter("quy_hoach_den", "quy_hoach_trang");
             doi_anh("quy_hoach_png", "png/quy_hoach_2.png");
-            
+
         }
 
         private void quy_hoach_leave(object sender, MouseEventArgs e)
@@ -560,7 +561,7 @@ namespace Benfinit_water.View
         {
             enter("dap_nuoc_den", "dap_nuoc_trang");
             doi_anh("dap_nuoc_png", "png/dap_nuoc_2.png");
-            
+
         }
 
         private void dap_nuoc_leave(object sender, MouseEventArgs e)
@@ -873,7 +874,7 @@ namespace Benfinit_water.View
         private void lich_su_down(object sender, MouseButtonEventArgs e)
         {
 
-            noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong (id);
+            noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
         }
         private void lich_su_enter(object sender, MouseEventArgs e)
         {
@@ -917,7 +918,7 @@ namespace Benfinit_water.View
         {
 
             if (myuser.IsAdmin)
-                noi_dung.Content = new ctrl_supersu(id);
+                noi_dung.Content = new ctrl_supersu(id,noi_dung);
             else MessageBox.Show("Bạn không có quyền truy cập");
         }
 
@@ -940,13 +941,13 @@ namespace Benfinit_water.View
 
         private void dang_xuat_down(object sender, MouseButtonEventArgs e)
         {
-            win_dang_nhap mywin= new win_dang_nhap();
-            
+            win_dang_nhap mywin = new win_dang_nhap();
+
             this.Close();
             mywin.Show();
 
         }
-        
+
         private readonly List<string> items = newtimkiem._string;
 
 
@@ -974,49 +975,52 @@ namespace Benfinit_water.View
         private void btn_seach_down(object sender, MouseButtonEventArgs e)
         {
             List<string> temp = _TimKiem.SearchData(newtimkiem._data, SearchBox.Text);
-            if (temp.First() is null) return;
-            switch (temp.First())
+            if (temp.First() is null) ;
+            else
             {
-                case "users":
-                    
-                    break;
+                switch (temp.First())
+                {
+                    case "users":
 
-                case "trambom":
-                    noi_dung.Content = new ctrl_TramBom();
-                    break;
-                case "quyhoach":
-                    noi_dung.Content = new ctrl_quy_hoach();
-                    break;
-                case "muc_do_hanh_chinh":
-                    
-                    break;
-                case "duongong":
-                    noi_dung.Content = new ctrl_DuongOng();
-                    break;
-               
-                case "daptran":
-                    noi_dung.Content = new ctrl_DapTran();
-                    break;
-                case "danhsachlichsutruycap":
-                    noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
-                    break;
-                case "danh_sach_co_so":
-                    
-                    break;
-                case "congtrinhthuyloi":
-                    noi_dung.Content = new ctrl_CongTrinh();
-                    break;
-                case "co_so":
-                    
-                    break;
+                        break;
 
-                case "access_history":
-                    noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
-                    break;
-            
-                default:
-                    
-                    break;
+                    case "trambom":
+                        noi_dung.Content = new ctrl_TramBom();
+                        break;
+                    case "quyhoach":
+                        noi_dung.Content = new ctrl_quy_hoach();
+                        break;
+                    case "muc_do_hanh_chinh":
+
+                        break;
+                    case "duongong":
+                        noi_dung.Content = new ctrl_DuongOng();
+                        break;
+
+                    case "daptran":
+                        noi_dung.Content = new ctrl_DapTran();
+                        break;
+                    case "danhsachlichsutruycap":
+                        noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
+                        break;
+                    case "danh_sach_co_so":
+
+                        break;
+                    case "congtrinhthuyloi":
+                        noi_dung.Content = new ctrl_CongTrinh();
+                        break;
+                    case "co_so":
+
+                        break;
+
+                    case "access_history":
+                        noi_dung.Content = new ctrl_lich_su_tac_dong_he_thong(id);
+                        break;
+
+                    default:
+
+                        break;
+                }
             }
 
             doi_anh("btn_seach_png", "png/seach_3.png");
@@ -1035,8 +1039,10 @@ namespace Benfinit_water.View
                 return;
             }
 
-            // Tìm kiếm gợi ý
-            var suggestions = items.Where(item => item.Contains(input)).ToList();
+            // Tìm kiếm gợi ý trong danh sách các chuỗi
+            var suggestions = items
+                .Where(item => item.ToLower().Contains(input))  // So sánh chuỗi không phân biệt hoa thường
+                .ToList();
 
             if (suggestions.Any())
             {

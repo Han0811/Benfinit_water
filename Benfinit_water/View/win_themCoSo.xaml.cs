@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Benfinit_water.Model;
+using Org.BouncyCastle.Asn1.Mozilla;
 
 namespace Benfinit_water.View
 {
@@ -21,9 +22,11 @@ namespace Benfinit_water.View
     public partial class win_themCoSo : Window
     {
         public int id;
-        public win_themCoSo(int _id)
+        public ContentControl noi_dung;
+        public win_themCoSo(int _id,ContentControl _noidung)
         {
             InitializeComponent();
+            noi_dung= _noidung;
             id = _id;
         }
 
@@ -56,6 +59,7 @@ namespace Benfinit_water.View
                 {
                     MessageBox.Show("Thao tác thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close(); // Đóng cửa sổ sau khi thành công
+                    noi_dung.Content = new ctrl_danh_sach_co_so(id,noi_dung);
                 }
                 else
                 {
@@ -78,5 +82,11 @@ namespace Benfinit_water.View
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            win_PhanQuyenNhomCoSo mywin = new win_PhanQuyenNhomCoSo(id,noi_dung);
+            mywin.Show();
+            this.Close();
+        }
     }
 }

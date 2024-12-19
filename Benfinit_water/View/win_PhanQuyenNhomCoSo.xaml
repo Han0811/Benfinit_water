@@ -6,7 +6,36 @@
         xmlns:local="clr-namespace:Benfinit_water.View"
         mc:Ignorable="d"
         Title="win_PhanQuyenNhomCoSo" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="titlectbl"
+                       Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center">Phân cấp nhóm cơ sở</TextBlock>
+
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="oldctbl">Cơ sở trực thuộc cũ id</TextBlock>
+            <TextBox x:Name="oldctbx"
+                     Grid.Column="1"></TextBox>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="newctbl">Điều chuyển cơ sở mới id</TextBlock>
+            <TextBox x:Name="newctbx"
+                     Grid.Column="1"></TextBox>
+        </Grid>
+        <Button Click="Button_Click">Phân cấp nhóm cơ sở</Button>
+    </StackPanel>
 </Window>

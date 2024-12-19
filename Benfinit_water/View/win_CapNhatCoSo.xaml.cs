@@ -27,13 +27,14 @@ namespace Benfinit_water.View
         public int idnontaget;
         private List<usermodel> users= _userprovider.GetUsers();
         private usermodel myuser;
-        
+        public ContentControl myctrl;
         
 
-        public win_CapNhatCoSo(int __id, int _idnontaget)
+        public win_CapNhatCoSo(int __id, int _idnontaget,ContentControl _myctrl)
         {
             InitializeComponent();
             idnontaget = _idnontaget;
+            myctrl = _myctrl;
             _id = __id;
             myCoSo = _CoSoProvider.FindCoSoFirstById(CoSo, _id);
             myuser = _thong_tin_user.GetUserById(idnontaget, users);
@@ -87,6 +88,7 @@ namespace Benfinit_water.View
             nametbx.Text = myCoSo.name;
             muc_do_hanh_chinh_idtbx.Text = myCoSo.muc_do_hanh_chinh_id.ToString();
             truc_thuoctbx.Text = myCoSo.truc_thuoc.ToString();
+            myctrl.Content = new ctrl_danh_sach_co_so(idnontaget, myctrl);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -100,7 +102,8 @@ namespace Benfinit_water.View
             {
                 // Nếu người dùng chọn Yes
                 if (_CoSoProvider.f_coso(-1, idnontaget, _id, null, null, null)) MessageBox.Show("Xóa cơ sở thành công");
-                
+                this.Close();
+                myctrl.Content = new ctrl_danh_sach_co_so(idnontaget, myctrl);
             }
             else
             {
