@@ -1,0 +1,72 @@
+﻿<Window x:Class="Benfinit_water.View.win_phan_quyen_theo_nhom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Benfinit_water.View"
+        mc:Ignorable="d"
+        Title="win_phan_quyen_theo_nhom"
+        Height="450"
+        Width="800">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="titlectbl"
+                       Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center">Phân cấp nhóm cơ sở</TextBlock>
+
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="oldctbl">Cơ sở trực thuộc cũ id</TextBlock>
+            <TextBox x:Name="oldctbx"
+                     Grid.Column="1"></TextBox>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="newctbl">Điều chuyển cơ sở mới id</TextBlock>
+            <TextBox x:Name="newctbx"
+                     Grid.Column="1"></TextBox>
+        </Grid>
+        <Button Click="Button_Click">Phân cấp nhóm cơ sở</Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="titleutbl"
+                       Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center">Điều chuyển công tác nhóm người dùng</TextBlock>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="oldutbl">Cơ sở công tác cũ</TextBlock>
+            <TextBox x:Name="oldutbx"
+                     Grid.Column="1"></TextBox>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="newutbl">Cơ sở dông tác mới</TextBlock>
+            <TextBox x:Name="newutbx"
+                     Grid.Column="1"></TextBox>
+        </Grid>
+        <Button Click="Button_Click_1">Điều chuyển công tác nhóm người dùng</Button>
+    </StackPanel>
+</Window>

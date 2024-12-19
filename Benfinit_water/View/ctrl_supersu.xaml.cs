@@ -48,7 +48,10 @@ namespace Benfinit_water.View
             }
         }
 
-
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            win_phan_quyen_theo_nhom mywin= new win_phan_quyen_theo_nhom(id);
+            mywin.Show();
+        }
     }
 }

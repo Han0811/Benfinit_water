@@ -16,16 +16,16 @@
 
         </Grid.ColumnDefinitions>
         <StackPanel>
-            <TextBox x:Name="idtbl"
+            <TextBox 
                      FontSize="15"
                      IsEnabled="False">Mã hành chính</TextBox>
-            <TextBox x:Name="nametbl"
+            <TextBox 
                      FontSize="15"
                      IsEnabled="False">Tên</TextBox>
-            <TextBox x:Name="muc_do_hanh_chinh_idtbl"
+            <TextBox 
                      FontSize="15"
                      IsEnabled="False">Cấp</TextBox>
-            <TextBox x:Name="truc_thuoc"
+            <TextBox 
                      FontSize="15"
                      IsEnabled="False">Trực thuộc</TextBox>
             

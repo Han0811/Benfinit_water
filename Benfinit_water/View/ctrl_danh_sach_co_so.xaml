@@ -6,24 +6,29 @@
              xmlns:local="clr-namespace:Benfinit_water.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <Button Click="Button_Click" Height="30">Thêm mới</Button>
-        
-        <ListView x:Name="listBoxCoSo"
-                  Margin="10"
-                  SelectionChanged="ListBoxCoSo_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="ID"
-                                    DisplayMemberBinding="{Binding id}"
-                                    Width="50" />
-                    <GridViewColumn Header="Data"
-                                    DisplayMemberBinding="{Binding hienthi}"
-                                    Width="auto" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel>
+            <Button Click="Button_Click"
+                    Height="30">Thêm mới</Button>
+
+            <ListView x:Name="listBoxCoSo"
+                      Margin="10"
+                      SelectionChanged="ListBoxCoSo_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID"
+                                        DisplayMemberBinding="{Binding id}"
+                                        Width="50" />
+                        <GridViewColumn Header="Data"
+                                        DisplayMemberBinding="{Binding hienthi}"
+                                        Width="auto" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </ScrollViewer>
+
 
 
 </UserControl>

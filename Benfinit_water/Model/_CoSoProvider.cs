@@ -106,27 +106,20 @@ namespace Benfinit_water.Model
 
                         // Thực thi stored procedure
                         cmd.ExecuteNonQuery();
-
-                        // Thông báo thành công
-                        
-                        
                     }
                 }
-                
             }
             catch (MySqlException ex)
             {
-                temp=($"MySQL Error: {ex.Message}");
+                MessageBox.Show($"MySQL Error: {ex.Message}");
                 return false;
             }
             catch (Exception ex)
             {
-
-                temp=($"Error: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}");
                 return false;
             }
-            err newerr = new err(temp);
-            newerr.Show();
+            
             return true;
         }
 
