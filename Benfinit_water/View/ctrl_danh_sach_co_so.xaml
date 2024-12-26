@@ -126,6 +126,9 @@
                 <ColumnDefinition></ColumnDefinition>
                 
             </Grid.ColumnDefinitions>
+            <Button VerticalAlignment="Stretch"
+                    HorizontalAlignment="Right"
+                    Click="Button_Click_1"> phân quyền theo nhóm cơ sở</Button>
             <Menu VerticalAlignment="Stretch"
                   HorizontalAlignment="Left">
                 <MenuItem Header="Tìm kiếm danh mục hành chính">

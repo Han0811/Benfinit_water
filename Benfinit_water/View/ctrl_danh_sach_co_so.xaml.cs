@@ -234,6 +234,24 @@ namespace Benfinit_water.View
         {
             // Hiển thị kết quả tìm kiếm
             string keyword = SearchBox.Text;
+            // Xử lý nếu danh sách gợi ý có ít nhất một mục
+            if (SuggestionList.Items.Count > 0)
+            {
+                SuggestionList.SelectedIndex = 0; // Chọn mục đầu tiên
+                var firstItem = SuggestionList.SelectedItem?.ToString();
+
+                if (firstItem != null)
+                {
+                    SearchBox.Text = firstItem; // Đưa vào TextBox
+                    SuggestionList.Visibility = Visibility.Collapsed;
+                }
+                List<_CoSoModel> temp = _CoSoProvider.SearchByNameCoSo(newCoSo, SearchBox.Text);
+                listBoxCoSo.ItemsSource = temp;
+            }
+            else
+            {
+                MessageBox.Show($"No results found for: {SearchBox.Text}", "Search", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
 
             if (!string.IsNullOrWhiteSpace(keyword))
             {
@@ -410,6 +428,19 @@ namespace Benfinit_water.View
             var brush = new SolidColorBrush(Color.FromArgb(0xFF, 0xB4, 0xB4, 0xB4)); // Giá trị khởi tạo
             brush.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation);
             button1.BorderBrush = brush;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!myuser.IsAdmin)
+            {
+                MessageBox.Show("Bạn không có quyền chỉnh sửa");
+                return;
+            }
+            win_themCoSo mywin = new win_themCoSo(id, noi_dung);
+            mywin.Show();
+            newCoSo = _CoSoProvider.getCoSo();
+            listBoxCoSo.ItemsSource = newCoSo;
         }
     }
   
