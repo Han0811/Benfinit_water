@@ -149,6 +149,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
             <ListView x:Name="listBoxCoSo"
+                      Height="500"
                       Margin="10"
                       SelectionChanged="ListBoxCoSo_SelectionChanged">
                 <ListView.View>
