@@ -93,23 +93,34 @@ namespace Benfinit_water.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Bạn có muốn xóa cơ sở này?",
-                                     "Xác nhận",
-                                     MessageBoxButton.YesNo,
-                                     MessageBoxImage.Question);
+            if (myuser.IsAdmin) {
+                var result = MessageBox.Show("Bạn có muốn xóa cơ sở này?",
+                                        "Xác nhận",
+                                        MessageBoxButton.YesNo,
+                                        MessageBoxImage.Question);
 
-            if (result == MessageBoxResult.Yes)
-            {
-                // Nếu người dùng chọn Yes
-                if (_CoSoProvider.f_coso(-1, idnontaget, _id, null, null, null)) MessageBox.Show("Xóa cơ sở thành công");
-                this.Close();
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Nếu người dùng chọn Yes
+                    if (_CoSoProvider.f_coso(-1, idnontaget, _id, null, null, null)) MessageBox.Show("Xóa cơ sở thành công");
+                    this.Close();
+                    myctrl.Content = new ctrl_danh_sach_co_so(idnontaget, myctrl);
+                }
+                else
+                {
+                    // Nếu người dùng chọn No
+                    MessageBox.Show("Đã hủy thao tác cập nhật.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                CoSo = _CoSoProvider.getCoSo();
+                myCoSo = _CoSoProvider.FindCoSoFirstById(CoSo, _id);
+                idtbx.Text = _id.ToString();
+                nametbx.Text = (myCoSo.name==null)?"": myCoSo.name;
+                muc_do_hanh_chinh_idtbx.Text = myCoSo.muc_do_hanh_chinh_id.ToString();
+                truc_thuoctbx.Text = myCoSo.truc_thuoc.ToString();
                 myctrl.Content = new ctrl_danh_sach_co_so(idnontaget, myctrl);
             }
-            else
-            {
-                // Nếu người dùng chọn No
-                MessageBox.Show("Đã hủy thao tác cập nhật.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            else { MessageBox.Show("Bạn không có quyền chỉnh sửa"); }
+               
             
         }
     }
